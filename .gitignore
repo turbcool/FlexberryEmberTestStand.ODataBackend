@@ -1,0 +1,9 @@
+**/packages/
+**/bin/
+**/obj/
+**/.vs/
+*.coverage
+*.xml
+
+#Ignore files built by Visual Studio
+*.user
