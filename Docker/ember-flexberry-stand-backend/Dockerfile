@@ -4,10 +4,10 @@ ENV PROJECT=EmberFlexberry
 
 ARG TAG=1.0.0-beta01-backend
 
-RUN	cd /backend-src ; \
-	echo "#nuget restore $PROJECT.sln" ; \
+RUN	
+	git clone --depth=50 --branch=$TAG https://github.com/Flexberry/FlexberryEmberTestStand.ODataBackend.git /backend-src && \
+	cd /backend-src ; \
 	nuget restore $PROJECT.sln ; \
-	echo "#msbuild /p:Configuration=Release $PROJECT.sln" ; \
 	msbuild /p:Configuration=Release $PROJECT.sln 
 
 FROM flexberry/alt.p8-apache2-mono:latest
