@@ -13,6 +13,6 @@ FROM flexberry/alt.p8-apache2-mono:latest
 
 RUN	rm -r /var/www/vhosts/test
 
-COPY --from=backend /backend-src/$PROJECT/ODataBackend /var/www/vhosts/test
+COPY --from=backend /backend-src/EmberFlexberry/ODataBackend /var/www/vhosts/test
 COPY vhosts.conf /conf
 
