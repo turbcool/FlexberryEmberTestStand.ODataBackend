@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <configuration>
   <configSections>
@@ -14,7 +14,7 @@
     <add key="DefaultConnectionStringName" value="DefConnStr" />
   </appSettings>
   <connectionStrings>
-    <add name="DefConnStr" connectionString="Server=server;Port={1};User Id=userid;Password=123;Database=dbase;" />
+    <add name="DefConnStr" connectionString="SERVER=app-postgres-db;User ID=flexberryuser;Password=jhv;Port=5432;DATABASE=appdb;" />
   </connectionStrings>
   <system.web>
     <compilation debug="true" />
