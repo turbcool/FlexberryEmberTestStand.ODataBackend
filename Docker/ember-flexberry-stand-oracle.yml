@@ -1,0 +1,16 @@
+﻿version: '3'
+services:
+  app-oracle-db:
+    image: "flexberry/ember-flexberry-stand-oracle:latest"
+    volumes:
+      - OracleEmberFlexberryStandDB:/u01/app/oracle/oradata/XE/
+    ports:
+     - "1521:1521"
+  FlexberryApp:
+    image: "flexberry/ember-flexberry-stand-backend:latest"
+    command: /bin/bash -c "( rm /var/www/vhosts/test/Web.config ; /bin/cp /var/www/vhosts/test/Web.config.oracle /var/www/vhosts/test/Web.config ; /usr/sbin/httpd2 -D NO_DETACH -k start )"
+    ports:
+     - "6500:6500"
+
+volumes:
+  OracleEmberFlexberryStandDB: 
