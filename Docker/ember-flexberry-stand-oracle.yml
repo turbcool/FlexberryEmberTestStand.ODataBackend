@@ -3,7 +3,7 @@ services:
   app-oracle-db:
     image: "flexberry/ember-flexberry-stand-oracle:latest"
     volumes:
-      - OracleEmberFlexberryStandDB:/u01/app/oracle/oradata/XE/
+      - OracleEmberFlexberryStandDB:/u01/
     ports:
      - "1521:1521"
   FlexberryApp:
