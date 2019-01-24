@@ -1,0 +1,20 @@
+﻿version: '3'
+services:
+  app-mssql-db:
+    environment:
+     - ACCEPT_EULA=Y
+     - SA_PASSWORD=demoFD123
+    image: "flexberry/ember-flexberry-stand-mssql:latest"
+    command: /opt/mssql/bin/sqlservr
+    volumes:
+      - MssqlEmberFlexberryStandDB:/var/opt/mssql/
+    ports:
+     - "1433:1433"
+  FlexberryApp:
+    image: "flexberry/ember-flexberry-stand-backend:latest"
+    command: /bin/bash -c "( rm /var/www/vhosts/test/Web.config ; /bin/cp /var/www/vhosts/test/Web.config.mssql /var/www/vhosts/test/Web.config ; /usr/sbin/httpd2 -D NO_DETACH -k start )"
+    ports:
+     - "6500:6500"
+
+volumes:
+  MssqlEmberFlexberryStandDB: 
