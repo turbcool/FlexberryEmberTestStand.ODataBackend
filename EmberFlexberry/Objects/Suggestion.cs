@@ -76,6 +76,24 @@ namespace EmberFlexberryDummy
             ""})]
     [MasterViewDefineAttribute("SuggestionE", "Type", ICSSoft.STORMNET.LookupTypeEnum.Standard, "", "Name")]
     [MasterViewDefineAttribute("SuggestionE", "Author", ICSSoft.STORMNET.LookupTypeEnum.Standard, "", "Name")]
+    [View("SuggestionEWithComputedField", new string[] {
+            "Address",
+            "Text",
+            "Date",
+            "Votes",
+            "Moderated",
+            "Author",
+            "Author.Name",
+            "Type",
+            "Type.Name",
+            "Type.Moderated",
+            "Type.ComputedField",
+            "Editor1",
+            "Editor1.Name",
+            "CreateTime",
+            "Creator",
+            "EditTime",
+            "Editor"})]
     [View("SuggestionL", new string[] {
             "Address as \'Address\'",
             "Text as \'Text\'",
@@ -436,7 +454,6 @@ namespace EmberFlexberryDummy
             get
             {
                 // *** Start programmer edit section *** (Suggestion.CommentsCount Get)
-
                 return 0;
                 // *** End programmer edit section *** (Suggestion.CommentsCount Get)
             }
@@ -680,6 +697,17 @@ namespace EmberFlexberryDummy
                 get
                 {
                     return ICSSoft.STORMNET.Information.GetView("SuggestionE", typeof(EmberFlexberryDummy.Suggestion));
+                }
+            }
+            
+            /// <summary>
+            /// "SuggestionEWithComputedField" view.
+            /// </summary>
+            public static ICSSoft.STORMNET.View SuggestionEWithComputedField
+            {
+                get
+                {
+                    return ICSSoft.STORMNET.Information.GetView("SuggestionEWithComputedField", typeof(EmberFlexberryDummy.Suggestion));
                 }
             }
             

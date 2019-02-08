@@ -46,6 +46,16 @@ namespace EmberFlexberryDummy
     [AssociatedDetailViewAttribute("SuggestionTypeE", "LocalizedTypes", "LocalizedSuggestionTypeE", true, "", "Localized types", true, new string[] {
             ""})]
     [MasterViewDefineAttribute("SuggestionTypeE", "Parent", ICSSoft.STORMNET.LookupTypeEnum.Standard, "", "Name")]
+    [View("SuggestionTypeEWithComputedField", new string[] {
+            "Name",
+            "Moderated",
+            "ComputedField",
+            "Parent",
+            "Parent.Name",
+            "Parent.Moderated",
+            "Parent.ComputedField"})]
+    [AssociatedDetailViewAttribute("SuggestionTypeEWithComputedField", "LocalizedTypes", "LocalizedSuggestionTypeE", true, "", "", true, new string[] {
+            ""})]
     [View("SuggestionTypeL", new string[] {
             "Name as \'Name\'",
             "Moderated as \'Moderated\'",
@@ -263,6 +273,32 @@ namespace EmberFlexberryDummy
                 // *** End programmer edit section *** (SuggestionType.Moderated Set end)
             }
         }
+
+        /// <summary>
+        /// ComputedField.
+        /// </summary>
+        // *** Start programmer edit section *** (SuggestionType.ComputedField CustomAttributes)
+        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.SQLDataService), "@Name@ + \' \' + @Moderated@")]
+        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.MSSQLDataService), "@Name@ + \' \' + @Moderated@")]
+        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.PostgresDataService), "@Name@ || \' \' || @Moderated@")]
+        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.OracleDataService), "@Name@ || \\\' \\\' || @Moderated@")]
+        // *** End programmer edit section *** (SuggestionType.ComputedField CustomAttributes)
+        [ICSSoft.STORMNET.NotStored()]
+        public virtual string ComputedField
+        {
+            get
+            {
+                // *** Start programmer edit section *** (SuggestionType.ComputedField Get)
+                return Name + " " + Moderated.ToString();
+                // *** End programmer edit section *** (SuggestionType.ComputedField Get)
+            }
+            set
+            {
+                // *** Start programmer edit section *** (SuggestionType.ComputedField Set)
+
+                // *** End programmer edit section *** (SuggestionType.ComputedField Set)
+            }
+        }
         
         /// <summary>
         /// Suggestion type.
@@ -357,6 +393,17 @@ namespace EmberFlexberryDummy
                 get
                 {
                     return ICSSoft.STORMNET.Information.GetView("SuggestionTypeE", typeof(EmberFlexberryDummy.SuggestionType));
+                }
+            }
+            
+            /// <summary>
+            /// "SuggestionTypeEWithComputedField" view.
+            /// </summary>
+            public static ICSSoft.STORMNET.View SuggestionTypeEWithComputedField
+            {
+                get
+                {
+                    return ICSSoft.STORMNET.Information.GetView("SuggestionTypeEWithComputedField", typeof(EmberFlexberryDummy.SuggestionType));
                 }
             }
             
