@@ -53,7 +53,9 @@ namespace EmberFlexberryDummy
             "Parent",
             "Parent.Name",
             "Parent.Moderated",
-            "Parent.ComputedField"})]
+            "Parent.ComputedField",
+            "Parent.Parent",
+            "Parent.Parent.Name"})]
     [AssociatedDetailViewAttribute("SuggestionTypeEWithComputedField", "LocalizedTypes", "LocalizedSuggestionTypeE", true, "", "", true, new string[] {
             ""})]
     [View("SuggestionTypeL", new string[] {
@@ -278,10 +280,10 @@ namespace EmberFlexberryDummy
         /// ComputedField.
         /// </summary>
         // *** Start programmer edit section *** (SuggestionType.ComputedField CustomAttributes)
-        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.SQLDataService), "@Name@ + \' \' + @Moderated@")]
-        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.MSSQLDataService), "@Name@ + \' \' + @Moderated@")]
-        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.PostgresDataService), "@Name@ || \' \' || @Moderated@")]
-        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.OracleDataService), "@Name@ || \\\' \\\' || @Moderated@")]
+        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.SQLDataService), "@Parent.Name@ + \' \' + @Moderated@")]
+        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.MSSQLDataService), "@Parent.Name@ + \' \' + @Moderated@")]
+        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.PostgresDataService), "@Parent.Name@ || \' \' || @Moderated@")]
+        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.OracleDataService), "@Parent.Name@ || \\\' \\\' || @Moderated@")]
         // *** End programmer edit section *** (SuggestionType.ComputedField CustomAttributes)
         [ICSSoft.STORMNET.NotStored()]
         public virtual string ComputedField
@@ -289,7 +291,14 @@ namespace EmberFlexberryDummy
             get
             {
                 // *** Start programmer edit section *** (SuggestionType.ComputedField Get)
-                return Name + " " + Moderated.ToString();
+               if (Parent != null)
+                {
+                    return Parent.Name + " " + Moderated.ToString();
+                }
+                else
+                {
+                    return Moderated.ToString();
+                }
                 // *** End programmer edit section *** (SuggestionType.ComputedField Get)
             }
             set
