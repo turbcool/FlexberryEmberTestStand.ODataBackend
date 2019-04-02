@@ -62,8 +62,9 @@ namespace EmberFlexberryDummy
             "Name as \'Name\'",
             "Moderated as \'Moderated\'",
             "Parent as \'Parent\'",
-            "Parent.Name as \'Name\'"}, Hidden=new string[] {
-            "Parent.Name"})]
+            "Parent.Name as \'Name\'",
+            "Parent.Parent",
+            "Parent.Parent.Name"})]
     [MasterViewDefineAttribute("SuggestionTypeL", "Parent", ICSSoft.STORMNET.LookupTypeEnum.Standard, "", "Name")]
     public class SuggestionType : ICSSoft.STORMNET.DataObject, IDataObjectWithAuditFields
     {
