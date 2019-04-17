@@ -18,6 +18,8 @@
 
     using Unity;
     using Unity.AspNet.WebApi;
+    using System.Web;
+    using ICSSoft.STORMNET.Business;
 
     /// <summary>
     /// Configure OData Service.
@@ -47,6 +49,9 @@
 
             // Use Unity as WebAPI dependency resolver
             config.DependencyResolver = new UnityDependencyResolver(container);
+
+            // Config file upload.
+            config.MapODataServiceFileRoute("File", "api/File", HttpContext.Current.Server.MapPath("~/Uploads"), container.Resolve<IDataService>());
 
             // Create EDM model builder
             var assemblies = new[]
