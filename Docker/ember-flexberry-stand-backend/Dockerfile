@@ -2,12 +2,12 @@ FROM flexberry/mono-ember as backend
 
 ENV PROJECT=EmberFlexberry
 
-ARG TAG=1.0.0-beta04-backend
+ARG TAG=1.0.0-beta05-backend
 
 RUN	git clone --depth=50 --branch=$TAG https://github.com/Flexberry/FlexberryEmberTestStand.ODataBackend.git /backend-src && \
 	cd /backend-src/$PROJECT ; \
 	nuget restore $PROJECT.sln ; \
-	msbuild /p:Configuration=Release $PROJECT.sln 
+	msbuild /p:Configuration=Release $PROJECT.sln
 
 FROM flexberry/alt.p8-apache2-mono:latest
 
