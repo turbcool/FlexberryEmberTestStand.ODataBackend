@@ -1,27 +1,24 @@
 ﻿namespace EmberFlexberryDummy
 {
     using System;
+    using System.Data;
+    using System.Data.SqlClient;
+    using System.Linq;
     using System.Reflection;
+    using System.Web;
     using System.Web.Http;
-
-    using ICSSoft.STORMNET;
     using ICSSoft.Services;
+    using ICSSoft.STORMNET;
+    using ICSSoft.STORMNET.Business;
     using IIS.Caseberry.Logging.Objects;
-
     using NewPlatform.Flexberry;
     using NewPlatform.Flexberry.AspNet.WebApi.Cors;
     using NewPlatform.Flexberry.ORM.ODataService.Extensions;
     using NewPlatform.Flexberry.ORM.ODataService.Functions;
     using NewPlatform.Flexberry.ORM.ODataService.Model;
     using NewPlatform.Flexberry.Services;
-
     using Unity;
     using Unity.AspNet.WebApi;
-    using System.Web;
-    using ICSSoft.STORMNET.Business;
-    using System.Data;
-    using System.Data.SqlClient;
-    using System.Linq;
 
     /// <summary>
     /// Configure OData Service.
@@ -47,6 +44,7 @@
 
             // To support CORS uncomment the line below.
             config.EnableCors(new DynamicCorsPolicyProvider(true));
+
             // Use constructor with true first parameter for enable SupportsCredentials.
 
             // Use Unity as WebAPI dependency resolver
@@ -57,7 +55,7 @@
 
             // Create EDM model builder
             var assemblies = new[]
-            { 
+            {
                 Assembly.Load("EmberFlexberry.Objects"),
                 typeof(ApplicationLog).Assembly,
                 typeof(UserSetting).Assembly,
@@ -98,7 +96,7 @@
             DateTimeOffset date;
             if (!DateTimeOffset.TryParse(dateTime, out date))
             {
-                throw new ArgumentException("Invalid date format");
+                throw new ArgumentException("Invalid date format", nameof(dateTime));
             }
 
             SQLDataService ds = (SQLDataService)DataServiceProvider.DataService;
@@ -108,7 +106,8 @@
             {
                 IDbCommand command = connection.CreateCommand();
                 string tableName = Information.GetClassStorageName(typeof(ApplicationLog));
-                string timestampColumnName = Information.GetPropertyStorageName(typeof(ApplicationLog),
+                string timestampColumnName = Information.GetPropertyStorageName(
+                    typeof(ApplicationLog),
                     Information.ExtractPropertyName<ApplicationLog>(a => a.Timestamp));
                 command.CommandText = $"DELETE FROM {tableName} WHERE {timestampColumnName} <= @timestamp";
                 SqlParameter timestampParameter = new SqlParameter("@timestamp", SqlDbType.DateTimeOffset) { Value = date };
@@ -118,7 +117,7 @@
             }
             finally
             {
-                // Close the connection if that's how we got it
+                // Close the connection if that's how we got it.
                 connection.Close();
             }
         }
@@ -126,7 +125,7 @@
         /// <summary>
         /// OData function for delete all select records.
         /// </summary>
-        /// <param name="queryParameters">Request OData Parameters. </param>
+        /// <param name="queryParameters">Request OData Parameters.</param>
         /// <param name="pathName">Type name.</param>
         /// <param name="filterQuery">Query for filter.</param>
         /// <returns>Number of deleted records.</returns>
@@ -136,11 +135,11 @@
             {
                 SQLDataService dataService = DataServiceProvider.DataService as SQLDataService;
 
-                var type = queryParameters.GetDataObjectType(pathName);
                 var uri = $"http://a/b/c?{filterQuery}";
-                var lcs = queryParameters.CreateLcs(type, uri);
-                var updateObjects = dataService.LoadObjects(lcs);
-                var deletedCount = updateObjects.Length;
+                Type type = queryParameters.GetDataObjectType(pathName);
+                LoadingCustomizationStruct lcs = queryParameters.CreateLcs(type, uri);
+                DataObject[] updateObjects = dataService.LoadObjects(lcs);
+                int deletedCount = updateObjects.Length;
 
                 for (var i = 0; i < updateObjects.Length; i++)
                 {
@@ -153,7 +152,7 @@
                 return new
                 {
                     deletedCount,
-                    message = String.Empty
+                    message = string.Empty
                 };
             }
             catch (Exception e)
@@ -163,7 +162,7 @@
                 while (ex.InnerException != null)
                 {
                     ex = ex.InnerException;
-                    msg = "\n" + ex.Message;
+                    msg += Environment.NewLine + ex.Message;
                 }
 
                 return new
