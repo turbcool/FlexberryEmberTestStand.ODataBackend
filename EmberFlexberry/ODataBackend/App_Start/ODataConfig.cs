@@ -30,7 +30,7 @@
         /// </summary>
         /// <param name="config">Http configuration object.</param>
         /// <param name="container">Unity container.</param>
-        public static void Configure(HttpConfiguration config, IUnityContainer container)
+        public static void Configure(HttpConfiguration config, IUnityContainer container, HttpServer httpServer)
         {
             if (config == null)
             {
@@ -65,7 +65,7 @@
             var builder = new DefaultDataObjectEdmModelBuilder(assemblies);
 
             // Map OData Service
-            var token = config.MapODataServiceDataObjectRoute(builder);
+            var token = config.MapODataServiceDataObjectRoute(builder, httpServer);
 
             // User functions
             token.Functions.Register(new Func<QueryParameters, string>(Test));
