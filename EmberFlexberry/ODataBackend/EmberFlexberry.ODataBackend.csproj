@@ -53,6 +53,9 @@
     <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
       <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
+    <Reference Include="NewPlatform.Flexberry.ORM.ODataService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=11027c24ff789609, processorArchitecture=MSIL">
+      <HintPath>..\packages\NewPlatform.Flexberry.ORM.ODataService.5.1.0-alpha01\lib\net45\NewPlatform.Flexberry.ORM.ODataService.dll</HintPath>
+    </Reference>
     <Reference Include="NewPlatform.Flexberry.Reports.ExportToExcel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dd3c9e296c34a5da, processorArchitecture=MSIL">
       <HintPath>..\packages\NewPlatform.Flexberry.Reports.ExportToExcel.1.0.0-alpha06\lib\net45\NewPlatform.Flexberry.Reports.ExportToExcel.dll</HintPath>
     </Reference>
@@ -178,9 +181,6 @@
     </Reference>
     <Reference Include="Unity.AspNet.WebApi">
       <HintPath>..\packages\Unity.AspNet.WebApi.5.0.13\lib\net45\Unity.AspNet.WebApi.dll</HintPath>
-    </Reference>
-    <Reference Include="NewPlatform.Flexberry.ORM.ODataService">
-      <HintPath>..\packages\NewPlatform.Flexberry.ORM.ODataService.5.0.0\lib\net45\NewPlatform.Flexberry.ORM.ODataService.dll</HintPath>
     </Reference>
     <Reference Include="NewPlatform.Flexberry.AspNet.WebApi.Cors">
       <HintPath>..\packages\NewPlatform.Flexberry.AspNet.WebApi.Cors.1.1.1\lib\net45\NewPlatform.Flexberry.AspNet.WebApi.Cors.dll</HintPath>

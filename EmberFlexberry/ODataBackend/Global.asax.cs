@@ -16,7 +16,7 @@
             IUnityContainer container = new UnityContainer();
             container.LoadConfiguration();
             container.RegisterInstance(DataServiceProvider.DataService);
-            GlobalConfiguration.Configure(configuration => ODataConfig.Configure(configuration, container));
+            GlobalConfiguration.Configure(configuration => ODataConfig.Configure(configuration, container, GlobalConfiguration.DefaultServer));
         }
     }
 }
