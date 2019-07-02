@@ -167,14 +167,14 @@
     <Reference Include="NewPlatform.Flexberry.LockService">
       <HintPath>..\packages\NewPlatform.Flexberry.LockService.2.0.0\lib\net45\NewPlatform.Flexberry.LockService.dll</HintPath>
     </Reference>
-    <Reference Include="UserSettingsService">
-      <HintPath>..\packages\NewPlatform.Flexberry.UserSettingsService.3.0.0\lib\net45\UserSettingsService.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Http.WebHost">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="UserSettingsService, Version=1.1.0.0, Culture=neutral, PublicKeyToken=2169f05da5d7fddc, processorArchitecture=MSIL">
+      <HintPath>..\packages\NewPlatform.Flexberry.UserSettingsService.3.1.0-beta01\lib\net45\UserSettingsService.dll</HintPath>
     </Reference>
     <Reference Include="WebActivatorEx">
       <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
