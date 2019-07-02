@@ -10,10 +10,7 @@
     using ICSSoft.Services;
     using ICSSoft.STORMNET;
     using ICSSoft.STORMNET.Business;
-    using ICSSoft.STORMNET.FunctionalLanguage;
-    using ICSSoft.STORMNET.Windows.Forms;
     using IIS.Caseberry.Logging.Objects;
-    using NewPlatform.Flexberry;
     using NewPlatform.Flexberry.AspNet.WebApi.Cors;
     using NewPlatform.Flexberry.ORM.ODataService.Extensions;
     using NewPlatform.Flexberry.ORM.ODataService.Functions;
@@ -61,10 +58,7 @@
                 Assembly.Load("EmberFlexberry.Objects"),
                 typeof(ApplicationLog).Assembly,
                 typeof(UserSetting).Assembly,
-                typeof(FlexberryUserSetting).Assembly,
                 typeof(Lock).Assembly,
-                typeof(STORMAdvLimit).Assembly,
-                typeof(TypedObject).Assembly
             };
             var builder = new DefaultDataObjectEdmModelBuilder(assemblies);
 
