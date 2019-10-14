@@ -120,7 +120,6 @@ namespace EmberFlexberryDummy
             get
             {
                 // *** Start programmer edit section *** (StudyRecord.ShowName Get)
-
                 return null;
                 // *** End programmer edit section *** (StudyRecord.ShowName Get)
             }

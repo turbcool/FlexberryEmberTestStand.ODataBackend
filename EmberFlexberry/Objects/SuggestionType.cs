@@ -12,6 +12,7 @@ namespace EmberFlexberryDummy
 {
     using System;
     using System.Xml;
+    using ICSSoft.STORMNET.Business;
     using ICSSoft.STORMNET;
     using ICSSoft.STORMNET.Business.Audit;
     
@@ -27,6 +28,7 @@ namespace EmberFlexberryDummy
     // *** Start programmer edit section *** (SuggestionType CustomAttributes)
 
     // *** End programmer edit section *** (SuggestionType CustomAttributes)
+    [BusinessServer("EmberFlexberryDummy.ApplicationBS, EmberFlexberry.BusinessServers", ICSSoft.STORMNET.Business.DataServiceObjectEvents.OnAllEvents)]
     [AutoAltered()]
     [Caption("Suggestion type")]
     [AccessType(ICSSoft.STORMNET.AccessType.none)]
@@ -53,7 +55,9 @@ namespace EmberFlexberryDummy
             "Parent",
             "Parent.Name",
             "Parent.Moderated",
-            "Parent.ComputedField"})]
+            "Parent.ComputedField",
+            "Parent.Parent",
+            "Parent.Parent.Name"})]
     [AssociatedDetailViewAttribute("SuggestionTypeEWithComputedField", "LocalizedTypes", "LocalizedSuggestionTypeE", true, "", "", true, new string[] {
             ""})]
     [View("SuggestionTypeL", new string[] {
@@ -273,7 +277,7 @@ namespace EmberFlexberryDummy
                 // *** End programmer edit section *** (SuggestionType.Moderated Set end)
             }
         }
-
+        
         /// <summary>
         /// ComputedField.
         /// </summary>

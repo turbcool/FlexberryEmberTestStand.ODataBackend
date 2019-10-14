@@ -84,7 +84,6 @@ namespace EmberFlexberryDummy
             get
             {
                 // *** Start programmer edit section *** (TextIf Get)
-
                 return null;
                 // *** End programmer edit section *** (TextIf Get)
             }

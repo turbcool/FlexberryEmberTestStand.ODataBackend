@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{714C7AF9-8FEE-4FF2-BB84-7FC6B506197C}</ProjectGuid>
+    <ProjectGuid>{526F1C8E-0FEC-4764-B915-10179602D871}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EmberFlexberryDummy</RootNamespace>
-    <AssemblyName>EmberFlexberry.Objects</AssemblyName>
+    <AssemblyName>EmberFlexberry.BusinessServers</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -20,8 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\EmberFlexberry.Objects.xml</DocumentationFile>
-    <CodeAnalysisRuleSet>..\Flexberry.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\EmberFlexberry.BusinessServers.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,7 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\EmberFlexberry.Objects.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\EmberFlexberry.BusinessServers.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System">
@@ -42,11 +41,32 @@
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.3\lib\net40-client\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Spatial">
-      <HintPath>..\packages\Microsoft.Spatial.6.15.0\lib\portable-net45+win+wpa81\Microsoft.Spatial.dll</HintPath>
-    </Reference>
     <Reference Include="LogService">
       <HintPath>..\packages\NewPlatform.Flexberry.LogService.1.1.0\lib\net45\LogService.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql">
+      <HintPath>..\packages\Npgsql.3.0.8\lib\net45\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq">
+      <HintPath>..\packages\Remotion.Linq.1.15.2.0\lib\net45\Remotion.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.12.1.022\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Abstractions">
+      <HintPath>..\packages\Unity.Abstractions.3.3.0\lib\net45\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Configuration">
+      <HintPath>..\packages\Unity.Configuration.5.2.2\lib\net45\Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container">
+      <HintPath>..\packages\Unity.Container.5.8.6\lib\net45\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Spatial">
+      <HintPath>..\packages\Microsoft.Spatial.6.15.0\lib\portable-net45+win+wpa81\Microsoft.Spatial.dll</HintPath>
     </Reference>
     <Reference Include="ChangesToSqlBTMonitor">
       <HintPath>..\packages\NewPlatform.Flexberry.ORM.5.0.0\lib\net45\ChangesToSqlBTMonitor.dll</HintPath>
@@ -99,143 +119,21 @@
     <Reference Include="ICSSoft.STORMNET.UserDataTypes">
       <HintPath>..\packages\NewPlatform.Flexberry.ORM.5.0.0\lib\net45\ICSSoft.STORMNET.UserDataTypes.dll</HintPath>
     </Reference>
-    <Reference Include="Npgsql">
-      <HintPath>..\packages\Npgsql.3.0.8\lib\net45\Npgsql.dll</HintPath>
-    </Reference>
-    <Reference Include="Remotion.Linq">
-      <HintPath>..\packages\Remotion.Linq.1.15.2.0\lib\net45\Remotion.Linq.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
-    <Reference Include="Oracle.ManagedDataAccess">
-      <HintPath>..\packages\Oracle.ManagedDataAccess.12.1.022\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Abstractions">
-      <HintPath>..\packages\Unity.Abstractions.3.3.0\lib\net45\Unity.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Configuration">
-      <HintPath>..\packages\Unity.Configuration.5.2.2\lib\net45\Unity.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Container">
-      <HintPath>..\packages\Unity.Container.5.8.6\lib\net45\Unity.Container.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Objects\EmberFlexberry.Objects.csproj">
+      <Project>{bfc51f3e-582e-4481-b56c-f0d094165ed1}</Project>
+      <Name>EmberFlexberry.Objects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Objects\EmberFlexberry.Objects.csproj">
+      <Project>{714c7af9-8fee-4ff2-bb84-7fc6b506197c}</Project>
+      <Name>EmberFlexberry.Objects</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GraduateRecord.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Localization.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="LookupDropdown.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="EObj.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="listLocalization.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SuccessorSocialNetwork.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="CatalogMaster.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SuggestionType.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="VoteType.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Catalog.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="LocalizedSuggestionType.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="LazyLoadingDetail.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MasterLookupDropdown.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="LazyLoadingMaster.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ApplicationUser.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TestPolyAnotherChild.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Gender.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SuccessorPhone.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Vote.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Master.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="StudyRecord.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Suggestion.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TogglerExampleMaster.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Inter.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ChildLevel2.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ChildLevel1.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Parent.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Comment.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TogglerExampleDetail.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TestPoly.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="StudentRecord.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TestPolyChild.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Detail.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="TestPolyBase.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="SuggestionFile.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="CommentVote.cs">
+    <Compile Include="ApplicationBS.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

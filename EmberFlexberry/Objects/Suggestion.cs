@@ -12,6 +12,7 @@ namespace EmberFlexberryDummy
 {
     using System;
     using System.Xml;
+    using ICSSoft.STORMNET.Business;
     using ICSSoft.STORMNET;
     using ICSSoft.STORMNET.Business.Audit;
     
@@ -27,6 +28,7 @@ namespace EmberFlexberryDummy
     // *** Start programmer edit section *** (Suggestion CustomAttributes)
 
     // *** End programmer edit section *** (Suggestion CustomAttributes)
+    [BusinessServer("EmberFlexberryDummy.ApplicationBS, EmberFlexberry.BusinessServers", ICSSoft.STORMNET.Business.DataServiceObjectEvents.OnAllEvents)]
     [AutoAltered()]
     [AccessType(ICSSoft.STORMNET.AccessType.none)]
     [View("AuditView", new string[] {
@@ -144,17 +146,17 @@ namespace EmberFlexberryDummy
         
         private bool fModerated;
         
-        private EmberFlexberryDummy.ApplicationUser fAuthor;
-        
         private EmberFlexberryDummy.SuggestionType fType;
+        
+        private EmberFlexberryDummy.ApplicationUser fAuthor;
         
         private EmberFlexberryDummy.ApplicationUser fEditor1;
         
-        private EmberFlexberryDummy.DetailArrayOfVote fUserVotes;
+        private EmberFlexberryDummy.DetailArrayOfComment fComments;
         
         private EmberFlexberryDummy.DetailArrayOfSuggestionFile fFiles;
         
-        private EmberFlexberryDummy.DetailArrayOfComment fComments;
+        private EmberFlexberryDummy.DetailArrayOfVote fUserVotes;
         
         // *** Start programmer edit section *** (Suggestion CustomMembers)
 
@@ -468,40 +470,6 @@ namespace EmberFlexberryDummy
         /// <summary>
         /// Suggestion.
         /// </summary>
-        // *** Start programmer edit section *** (Suggestion.Author CustomAttributes)
-
-        // *** End programmer edit section *** (Suggestion.Author CustomAttributes)
-        [PropertyStorage(new string[] {
-                "Author"})]
-        [NotNull()]
-        public virtual EmberFlexberryDummy.ApplicationUser Author
-        {
-            get
-            {
-                // *** Start programmer edit section *** (Suggestion.Author Get start)
-
-                // *** End programmer edit section *** (Suggestion.Author Get start)
-                EmberFlexberryDummy.ApplicationUser result = this.fAuthor;
-                // *** Start programmer edit section *** (Suggestion.Author Get end)
-
-                // *** End programmer edit section *** (Suggestion.Author Get end)
-                return result;
-            }
-            set
-            {
-                // *** Start programmer edit section *** (Suggestion.Author Set start)
-
-                // *** End programmer edit section *** (Suggestion.Author Set start)
-                this.fAuthor = value;
-                // *** Start programmer edit section *** (Suggestion.Author Set end)
-
-                // *** End programmer edit section *** (Suggestion.Author Set end)
-            }
-        }
-        
-        /// <summary>
-        /// Suggestion.
-        /// </summary>
         // *** Start programmer edit section *** (Suggestion.Type CustomAttributes)
 
         // *** End programmer edit section *** (Suggestion.Type CustomAttributes)
@@ -530,6 +498,40 @@ namespace EmberFlexberryDummy
                 // *** Start programmer edit section *** (Suggestion.Type Set end)
 
                 // *** End programmer edit section *** (Suggestion.Type Set end)
+            }
+        }
+        
+        /// <summary>
+        /// Suggestion.
+        /// </summary>
+        // *** Start programmer edit section *** (Suggestion.Author CustomAttributes)
+
+        // *** End programmer edit section *** (Suggestion.Author CustomAttributes)
+        [PropertyStorage(new string[] {
+                "Author"})]
+        [NotNull()]
+        public virtual EmberFlexberryDummy.ApplicationUser Author
+        {
+            get
+            {
+                // *** Start programmer edit section *** (Suggestion.Author Get start)
+
+                // *** End programmer edit section *** (Suggestion.Author Get start)
+                EmberFlexberryDummy.ApplicationUser result = this.fAuthor;
+                // *** Start programmer edit section *** (Suggestion.Author Get end)
+
+                // *** End programmer edit section *** (Suggestion.Author Get end)
+                return result;
+            }
+            set
+            {
+                // *** Start programmer edit section *** (Suggestion.Author Set start)
+
+                // *** End programmer edit section *** (Suggestion.Author Set start)
+                this.fAuthor = value;
+                // *** Start programmer edit section *** (Suggestion.Author Set end)
+
+                // *** End programmer edit section *** (Suggestion.Author Set end)
             }
         }
         
@@ -570,35 +572,35 @@ namespace EmberFlexberryDummy
         /// <summary>
         /// Suggestion.
         /// </summary>
-        // *** Start programmer edit section *** (Suggestion.UserVotes CustomAttributes)
+        // *** Start programmer edit section *** (Suggestion.Comments CustomAttributes)
 
-        // *** End programmer edit section *** (Suggestion.UserVotes CustomAttributes)
-        public virtual EmberFlexberryDummy.DetailArrayOfVote UserVotes
+        // *** End programmer edit section *** (Suggestion.Comments CustomAttributes)
+        public virtual EmberFlexberryDummy.DetailArrayOfComment Comments
         {
             get
             {
-                // *** Start programmer edit section *** (Suggestion.UserVotes Get start)
+                // *** Start programmer edit section *** (Suggestion.Comments Get start)
 
-                // *** End programmer edit section *** (Suggestion.UserVotes Get start)
-                if ((this.fUserVotes == null))
+                // *** End programmer edit section *** (Suggestion.Comments Get start)
+                if ((this.fComments == null))
                 {
-                    this.fUserVotes = new EmberFlexberryDummy.DetailArrayOfVote(this);
+                    this.fComments = new EmberFlexberryDummy.DetailArrayOfComment(this);
                 }
-                EmberFlexberryDummy.DetailArrayOfVote result = this.fUserVotes;
-                // *** Start programmer edit section *** (Suggestion.UserVotes Get end)
+                EmberFlexberryDummy.DetailArrayOfComment result = this.fComments;
+                // *** Start programmer edit section *** (Suggestion.Comments Get end)
 
-                // *** End programmer edit section *** (Suggestion.UserVotes Get end)
+                // *** End programmer edit section *** (Suggestion.Comments Get end)
                 return result;
             }
             set
             {
-                // *** Start programmer edit section *** (Suggestion.UserVotes Set start)
+                // *** Start programmer edit section *** (Suggestion.Comments Set start)
 
-                // *** End programmer edit section *** (Suggestion.UserVotes Set start)
-                this.fUserVotes = value;
-                // *** Start programmer edit section *** (Suggestion.UserVotes Set end)
+                // *** End programmer edit section *** (Suggestion.Comments Set start)
+                this.fComments = value;
+                // *** Start programmer edit section *** (Suggestion.Comments Set end)
 
-                // *** End programmer edit section *** (Suggestion.UserVotes Set end)
+                // *** End programmer edit section *** (Suggestion.Comments Set end)
             }
         }
         
@@ -640,35 +642,35 @@ namespace EmberFlexberryDummy
         /// <summary>
         /// Suggestion.
         /// </summary>
-        // *** Start programmer edit section *** (Suggestion.Comments CustomAttributes)
+        // *** Start programmer edit section *** (Suggestion.UserVotes CustomAttributes)
 
-        // *** End programmer edit section *** (Suggestion.Comments CustomAttributes)
-        public virtual EmberFlexberryDummy.DetailArrayOfComment Comments
+        // *** End programmer edit section *** (Suggestion.UserVotes CustomAttributes)
+        public virtual EmberFlexberryDummy.DetailArrayOfVote UserVotes
         {
             get
             {
-                // *** Start programmer edit section *** (Suggestion.Comments Get start)
+                // *** Start programmer edit section *** (Suggestion.UserVotes Get start)
 
-                // *** End programmer edit section *** (Suggestion.Comments Get start)
-                if ((this.fComments == null))
+                // *** End programmer edit section *** (Suggestion.UserVotes Get start)
+                if ((this.fUserVotes == null))
                 {
-                    this.fComments = new EmberFlexberryDummy.DetailArrayOfComment(this);
+                    this.fUserVotes = new EmberFlexberryDummy.DetailArrayOfVote(this);
                 }
-                EmberFlexberryDummy.DetailArrayOfComment result = this.fComments;
-                // *** Start programmer edit section *** (Suggestion.Comments Get end)
+                EmberFlexberryDummy.DetailArrayOfVote result = this.fUserVotes;
+                // *** Start programmer edit section *** (Suggestion.UserVotes Get end)
 
-                // *** End programmer edit section *** (Suggestion.Comments Get end)
+                // *** End programmer edit section *** (Suggestion.UserVotes Get end)
                 return result;
             }
             set
             {
-                // *** Start programmer edit section *** (Suggestion.Comments Set start)
+                // *** Start programmer edit section *** (Suggestion.UserVotes Set start)
 
-                // *** End programmer edit section *** (Suggestion.Comments Set start)
-                this.fComments = value;
-                // *** Start programmer edit section *** (Suggestion.Comments Set end)
+                // *** End programmer edit section *** (Suggestion.UserVotes Set start)
+                this.fUserVotes = value;
+                // *** Start programmer edit section *** (Suggestion.UserVotes Set end)
 
-                // *** End programmer edit section *** (Suggestion.Comments Set end)
+                // *** End programmer edit section *** (Suggestion.UserVotes Set end)
             }
         }
         
