@@ -33,14 +33,19 @@ namespace EmberFlexberryDummy
     [View("AuditView", new string[] {
             "Name as \'Name\'",
             "Localization as \'Localization\'",
-            "Localization.Name as \'Name\'"}, Hidden=new string[] {
+            "Localization.Name as \'Name\'"}, Hidden = new string[] {
             "Localization.Name"})]
-    [MasterViewDefineAttribute("AuditView", "Localization", ICSSoft.STORMNET.LookupTypeEnum.Standard, "", "Name")]
     [View("LocalizedSuggestionTypeE", new string[] {
             "Name as \'Name\'",
             "Localization as \'Localization\'",
             "Localization.Name as \'Name\'",
-            "SuggestionType"}, Hidden=new string[] {
+            "SuggestionType"}, Hidden = new string[] {
+            "Localization.Name",
+            "SuggestionType"})]
+    [View("LocalizedSuggestionTypeEWithComputedField", new string[] {
+            "Name",
+            "DetailComputedField",
+            "Localization",
             "Localization.Name",
             "SuggestionType"})]
     [MasterViewDefineAttribute("LocalizedSuggestionTypeE", "Localization", ICSSoft.STORMNET.LookupTypeEnum.Standard, "", "Name")]
@@ -221,7 +226,31 @@ namespace EmberFlexberryDummy
                 // *** End programmer edit section *** (LocalizedSuggestionType.Name Set end)
             }
         }
-        
+
+        /// <summary>
+        /// DetailComputedField.
+        /// </summary>
+        // *** Start programmer edit section *** (LocalizedSuggestionType.DetailComputedField CustomAttributes)
+
+        // *** End programmer edit section *** (LocalizedSuggestionType.DetailComputedField CustomAttributes)
+        [ICSSoft.STORMNET.NotStored()]
+        public virtual string DetailComputedField
+        {
+            get
+            {
+                // *** Start programmer edit section *** (LocalizedSuggestionType.DetailComputedField Get)
+
+                return Name + ":" + Localization.Name;
+                // *** End programmer edit section *** (LocalizedSuggestionType.DetailComputedField Get)
+            }
+            set
+            {
+                // *** Start programmer edit section *** (LocalizedSuggestionType.DetailComputedField Set)
+
+                // *** End programmer edit section *** (LocalizedSuggestionType.DetailComputedField Set)
+            }
+        }
+
         /// <summary>
         /// Localized suggestion type.
         /// </summary>
@@ -316,6 +345,17 @@ namespace EmberFlexberryDummy
                 get
                 {
                     return ICSSoft.STORMNET.Information.GetView("LocalizedSuggestionTypeE", typeof(EmberFlexberryDummy.LocalizedSuggestionType));
+                }
+            }
+
+            /// <summary>
+            /// "LocalizedSuggestionTypeEWithComputedField" view.
+            /// </summary>
+            public static ICSSoft.STORMNET.View LocalizedSuggestionTypeEWithComputedField
+            {
+                get
+                {
+                    return ICSSoft.STORMNET.Information.GetView("LocalizedSuggestionTypeEWithComputedField", typeof(EmberFlexberryDummy.LocalizedSuggestionType));
                 }
             }
         }
