@@ -57,7 +57,7 @@
       <HintPath>..\packages\NewPlatform.Flexberry.ORM.ODataService.5.1.0-alpha01\lib\net45\NewPlatform.Flexberry.ORM.ODataService.dll</HintPath>
     </Reference>
     <Reference Include="NewPlatform.Flexberry.Reports.ExportToExcel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=dd3c9e296c34a5da, processorArchitecture=MSIL">
-      <HintPath>..\packages\NewPlatform.Flexberry.Reports.ExportToExcel.1.0.0-alpha06\lib\net45\NewPlatform.Flexberry.Reports.ExportToExcel.dll</HintPath>
+      <HintPath>..\packages\NewPlatform.Flexberry.Reports.ExportToExcel.1.0.0-alpha09\lib\net45\NewPlatform.Flexberry.Reports.ExportToExcel.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Cors">
       <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
