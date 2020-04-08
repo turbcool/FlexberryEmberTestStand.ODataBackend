@@ -155,7 +155,12 @@ namespace EmberFlexberryDummy
         private EmberFlexberryDummy.DetailArrayOfSuggestionFile fFiles;
         
         private EmberFlexberryDummy.DetailArrayOfComment fComments;
-        
+
+        /// <summary>
+        /// Cash value for CommentsCount field.
+        /// </summary>
+        private ICSSoft.STORMNET.UserDataTypes.NullableInt cashedCommentsCount = null;
+
         // *** Start programmer edit section *** (Suggestion CustomMembers)
 
         // *** End programmer edit section *** (Suggestion CustomMembers)
@@ -449,18 +454,21 @@ namespace EmberFlexberryDummy
         [ICSSoft.STORMNET.NotStored()]
         [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.SQLDataService), "SELECT COUNT(*) FROM Suggestion join Comment on Suggestion.primaryKey = Comment.S" +
             "uggestion WHERE Comment.Suggestion = StormMainObjectKey")]
-        public virtual int CommentsCount
+        public virtual ICSSoft.STORMNET.UserDataTypes.NullableInt CommentsCount
         {
             get
             {
                 // *** Start programmer edit section *** (Suggestion.CommentsCount Get)
-                return 0;
+                return this.cashedCommentsCount;
                 // *** End programmer edit section *** (Suggestion.CommentsCount Get)
             }
             set
             {
                 // *** Start programmer edit section *** (Suggestion.CommentsCount Set)
-
+                if (value != null)
+                {
+                    this.cashedCommentsCount = value;
+                }
                 // *** End programmer edit section *** (Suggestion.CommentsCount Set)
             }
         }
