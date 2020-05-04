@@ -64,7 +64,7 @@
             var builder = new DefaultDataObjectEdmModelBuilder(assemblies);
 
             // Map OData Service
-            var token = config.MapODataServiceDataObjectRoute(builder, httpServer);
+            var token = config.MapDataObjectRoute(builder, httpServer);
 
             // User functions
             token.Functions.Register(new Func<QueryParameters, string>(Test));
