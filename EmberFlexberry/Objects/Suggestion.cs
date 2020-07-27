@@ -358,6 +358,7 @@ namespace EmberFlexberryDummy
         // *** Start programmer edit section *** (Suggestion.Date CustomAttributes)
 
         // *** End programmer edit section *** (Suggestion.Date CustomAttributes)
+        [NotNull()]
         public virtual System.DateTime Date
         {
             get
