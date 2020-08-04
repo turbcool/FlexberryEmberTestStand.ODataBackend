@@ -13,6 +13,7 @@ namespace EmberFlexberryDummy
     using System;
     using System.Xml;
     using ICSSoft.STORMNET;
+    using ICSSoft.STORMNET.Business;
     using ICSSoft.STORMNET.Business.Audit;
     
     
@@ -60,6 +61,7 @@ namespace EmberFlexberryDummy
             "Name as \'Name\'",
             "Moderated as \'Moderated\'",
             "Parent as \'Parent\'",
+            "IsParentRecord as \'IsParentRecord\'",
             "Parent.Name as \'Name\'"}, Hidden=new string[] {
             "Parent.Name"})]
     [MasterViewDefineAttribute("SuggestionTypeL", "Parent", ICSSoft.STORMNET.LookupTypeEnum.Standard, "", "Name")]
@@ -81,12 +83,28 @@ namespace EmberFlexberryDummy
         private EmberFlexberryDummy.SuggestionType fParent;
         
         private EmberFlexberryDummy.DetailArrayOfLocalizedSuggestionType fLocalizedTypes;
-        
+
+        private bool fIsParentRecord;
+
         // *** Start programmer edit section *** (SuggestionType CustomMembers)
 
         // *** End programmer edit section *** (SuggestionType CustomMembers)
 
-        
+        /// <summary>
+        /// IsParentRecord.
+        /// </summary>
+        // *** Start programmer edit section *** (SuggestionType.IsParentRecord CustomAttributes)
+
+        // *** End programmer edit section *** (SuggestionType.IsParentRecord CustomAttributes)
+        [NotStored]
+        [DataServiceExpression(typeof(SQLDataService), "SELECT COUNT(*) > 0 FROM SuggestionType WHERE SuggestionType.Parent = StormMainObjectKey")]
+        public virtual bool IsParentRecord
+        {
+            get => fIsParentRecord;
+            set => fIsParentRecord = value;
+        }
+
+
         /// <summary>
         /// Время создания объекта.
         /// </summary>
