@@ -61,9 +61,9 @@ namespace EmberFlexberryDummy
             "Name as \'Name\'",
             "Moderated as \'Moderated\'",
             "Parent as \'Parent\'",
-            "IsParentRecord as \'IsParentRecord\'",
-            "Parent.Name as \'Name\'"}, Hidden=new string[] {
-            "Parent.Name"})]
+            "Parent.Name as \'Name\'"}, Hidden = new string[] {
+            "Parent.Name",
+            "IsParentRecord"})]
     [MasterViewDefineAttribute("SuggestionTypeL", "Parent", ICSSoft.STORMNET.LookupTypeEnum.Standard, "", "Name")]
     public class SuggestionType : ICSSoft.STORMNET.DataObject, IDataObjectWithAuditFields
     {
@@ -100,8 +100,19 @@ namespace EmberFlexberryDummy
         [DataServiceExpression(typeof(SQLDataService), "SELECT COUNT(*) > 0 FROM SuggestionType WHERE SuggestionType.Parent = StormMainObjectKey")]
         public virtual bool IsParentRecord
         {
-            get => fIsParentRecord;
-            set => fIsParentRecord = value;
+            get
+            {
+                // *** Start programmer edit section *** (SuggestionType.IsParentRecord Get)
+
+                return fIsParentRecord;
+                // *** End programmer edit section *** (SuggestionType.IsParentRecord Get)
+            }
+            set
+            {
+                // *** Start programmer edit section *** (SuggestionType.IsParentRecord Set)
+                fIsParentRecord = value;
+                // *** End programmer edit section *** (SuggestionType.IsParentRecord Set)
+            }
         }
 
 
