@@ -61,7 +61,8 @@ namespace EmberFlexberryDummy
             "Name as \'Name\'",
             "Moderated as \'Moderated\'",
             "Parent as \'Parent\'",
-            "Parent.Name as \'Name\'"}, Hidden = new string[] {
+            "Parent.Name as \'Name\'",
+            "IsParentRecord"}, Hidden = new string[] {
             "Parent.Name",
             "IsParentRecord"})]
     [MasterViewDefineAttribute("SuggestionTypeL", "Parent", ICSSoft.STORMNET.LookupTypeEnum.Standard, "", "Name")]
