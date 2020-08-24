@@ -13,6 +13,7 @@ namespace EmberFlexberryDummy
     using System;
     using System.Xml;
     using ICSSoft.STORMNET;
+    using ICSSoft.STORMNET.Business;
     using ICSSoft.STORMNET.Business.Audit;
     
     
@@ -60,8 +61,10 @@ namespace EmberFlexberryDummy
             "Name as \'Name\'",
             "Moderated as \'Moderated\'",
             "Parent as \'Parent\'",
-            "Parent.Name as \'Name\'"}, Hidden=new string[] {
-            "Parent.Name"})]
+            "Parent.Name as \'Name\'",
+            "IsParentRecord"}, Hidden = new string[] {
+            "Parent.Name",
+            "IsParentRecord"})]
     [MasterViewDefineAttribute("SuggestionTypeL", "Parent", ICSSoft.STORMNET.LookupTypeEnum.Standard, "", "Name")]
     public class SuggestionType : ICSSoft.STORMNET.DataObject, IDataObjectWithAuditFields
     {
@@ -81,12 +84,39 @@ namespace EmberFlexberryDummy
         private EmberFlexberryDummy.SuggestionType fParent;
         
         private EmberFlexberryDummy.DetailArrayOfLocalizedSuggestionType fLocalizedTypes;
-        
+
+        private bool fIsParentRecord;
+
         // *** Start programmer edit section *** (SuggestionType CustomMembers)
 
         // *** End programmer edit section *** (SuggestionType CustomMembers)
 
-        
+        /// <summary>
+        /// IsParentRecord.
+        /// </summary>
+        // *** Start programmer edit section *** (SuggestionType.IsParentRecord CustomAttributes)
+
+        // *** End programmer edit section *** (SuggestionType.IsParentRecord CustomAttributes)
+        [NotStored]
+        [DataServiceExpression(typeof(SQLDataService), "SELECT COUNT(*) > 0 FROM SuggestionType WHERE SuggestionType.Parent = StormMainObjectKey")]
+        public virtual bool IsParentRecord
+        {
+            get
+            {
+                // *** Start programmer edit section *** (SuggestionType.IsParentRecord Get)
+
+                return fIsParentRecord;
+                // *** End programmer edit section *** (SuggestionType.IsParentRecord Get)
+            }
+            set
+            {
+                // *** Start programmer edit section *** (SuggestionType.IsParentRecord Set)
+                fIsParentRecord = value;
+                // *** End programmer edit section *** (SuggestionType.IsParentRecord Set)
+            }
+        }
+
+
         /// <summary>
         /// Время создания объекта.
         /// </summary>
