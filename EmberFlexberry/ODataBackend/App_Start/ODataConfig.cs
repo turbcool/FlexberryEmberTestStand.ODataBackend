@@ -19,7 +19,6 @@
     using NewPlatform.Flexberry.Services;
     using Unity;
     using Unity.AspNet.WebApi;
-
     /// <summary>
     /// Configure OData Service.
     /// </summary>
