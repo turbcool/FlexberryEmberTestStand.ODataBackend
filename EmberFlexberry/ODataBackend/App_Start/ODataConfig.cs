@@ -68,6 +68,7 @@
 
             // User functions
             token.Functions.Register(new Func<QueryParameters, string>(Test));
+            token.Functions.Register(new Func<bool>(AddRecords));
             token.Functions.Register(new Func<string, bool>(ClearLogRecords));
             token.Functions.RegisterAction(new Func<QueryParameters, string, string, object>(DeleteAllSelect));
 
@@ -83,6 +84,24 @@
         private static string Test(QueryParameters queryParameters)
         {
             return "Hello world!";
+        }
+
+        private static bool AddRecords()
+        {
+            IDataService dataService = DataServiceProvider.DataService;
+            int count = 50000;
+            DataObject[] dataObjects = new DataObject[count];
+            ApplicationUser applicationUser = new ApplicationUser() { Name = "Igor", EMail = "i@me.com" };
+            SuggestionType suggestionType = new SuggestionType() { Name = "Zoo" };
+            
+            for (int i = 0; i < count; i++)
+            {
+                dataObjects[i] = new Suggestion() { Address = $"Street {i}", Author = applicationUser, Editor1 = applicationUser, Type = suggestionType };
+            }
+
+            dataService.UpdateObjects(ref dataObjects);
+
+            return true;
         }
 
         /// <summary>
