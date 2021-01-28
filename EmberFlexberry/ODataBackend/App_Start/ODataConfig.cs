@@ -1,6 +1,7 @@
 ﻿namespace EmberFlexberryDummy
 {
     using System;
+    using System.Collections.Generic;
     using System.Data;
     using System.Data.SqlClient;
     using System.Linq;
@@ -69,10 +70,30 @@
             // User functions
             token.Functions.Register(new Func<QueryParameters, string>(Test));
             token.Functions.Register(new Func<string, bool>(ClearLogRecords));
+            token.Functions.Register(new Func<QueryParameters,IEnumerable<Sotrudnik>>(GetMastersForTest));
             token.Functions.RegisterAction(new Func<QueryParameters, string, string, object>(DeleteAllSelect));
 
             // Event handlers
             token.Events.CallbackAfterCreate = CallbackAfterCreate;
+        }
+
+        private static IEnumerable<Sotrudnik> GetMastersForTest(QueryParameters queryParameters)
+        {
+            SQLDataService dataService = DataServiceProvider.DataService as SQLDataService;
+
+            ICSSoft.STORMNET.View view = new ICSSoft.STORMNET.View();
+            view.DefineClassType = typeof(Sotrudnik);
+            view.AddProperties(Information.ExtractPropertyPath<Sotrudnik>(x => x.Name));
+            view.AddProperties(Information.ExtractPropertyPath<Sotrudnik>(x => x.Familiia));
+            view.AddProperties(Information.ExtractPropertyPath<Sotrudnik>(x => x.DataRozhdeniia));
+            view.AddProperties(Information.ExtractPropertyPath<Sotrudnik>(x => x.Departament));
+            view.AddProperties(Information.ExtractPropertyPath<Sotrudnik>(x => x.Departament.Name));
+            view.AddProperties(Information.ExtractPropertyPath<Sotrudnik>(x => x.Departament.Vid));
+            view.AddProperties(Information.ExtractPropertyPath<Sotrudnik>(x => x.Departament.Vid.Name));
+            var lcs = LoadingCustomizationStruct.GetSimpleStruct(typeof(Sotrudnik), view);
+            var data = dataService.LoadObjects(lcs).Cast<Sotrudnik>();
+
+            return data;
         }
 
         private static void CallbackAfterCreate(DataObject dataObject)

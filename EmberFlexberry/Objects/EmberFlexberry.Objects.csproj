@@ -125,6 +125,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Departament.cs" />
     <Compile Include="GraduateRecord.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -140,6 +141,7 @@
     <Compile Include="listLocalization.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Sotrudnik.cs" />
     <Compile Include="SuccessorSocialNetwork.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -149,6 +151,7 @@
     <Compile Include="SuggestionType.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="VidDepartamenta.cs" />
     <Compile Include="VoteType.cs">
       <SubType>Code</SubType>
     </Compile>
