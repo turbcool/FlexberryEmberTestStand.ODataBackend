@@ -2,7 +2,7 @@ FROM flexberry/mono-ember as backend
 
 ENV PROJECT=EmberFlexberry
 
-ARG TAG=1.0.0-beta16-backend
+ARG TAG=1.0.0-beta17-backend
 
 RUN	git clone --depth=50 --branch=$TAG https://github.com/Flexberry/FlexberryEmberTestStand.ODataBackend.git /backend-src && \
 	cd /backend-src/$PROJECT ; \
