@@ -14,7 +14,7 @@ on:
 
       stack:
         description: 'Stack To Update'
-        default: 'GisTestStand'
+        default: 'EmberFlexberryStand'
         required: true
 
 jobs:

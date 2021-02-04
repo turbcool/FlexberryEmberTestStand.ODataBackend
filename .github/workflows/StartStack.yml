@@ -14,7 +14,7 @@ on:
 
       scriptDir:
         description: 'ScriptDir to (Re)start stack'
-        default: 'flexberryGisTestStand'
+        default: 'FlexberryEmberTestStand.ODataBackend/Docker'
         required: true
 
 jobs:
