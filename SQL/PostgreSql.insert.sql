@@ -82,5 +82,32 @@ INSERT INTO public.suggestion (primarykey, createtime, creator, edittime, editor
 
 
 --
+-- Data for Name: viddepartamenta; Type: TABLE DATA; Schema: public; Owner: flexberryuser
+--
+
+INSERT INTO public.viddepartamenta (primaryKey, name) VALUES ('7a6e65c5-e08b-487a-bf0d-3365dd2fac43', 'Финансы');
+INSERT INTO public.viddepartamenta (primaryKey, name) VALUES ('7b36f4f8-8ffe-4487-988d-554c77b3c389', 'Инфраструктура');
+
+
+--
+-- Data for Name: departament; Type: TABLE DATA; Schema: public; Owner: flexberryuser
+--
+
+INSERT INTO public.departament (primaryKey, name, vid) VALUES ('e72486ab-4e7b-429e-b078-812609f0baf7', 'Коммерческий департамент', '7a6e65c5-e08b-487a-bf0d-3365dd2fac43');
+INSERT INTO public.departament (primaryKey, name, vid) VALUES ('8153fa4e-0852-4210-98f7-caec10d01998', 'Департамент развлечений и трат', '7a6e65c5-e08b-487a-bf0d-3365dd2fac43');
+INSERT INTO public.departament (primaryKey, name, vid) VALUES ('3817803e-404c-420b-b7d2-de942d087345', 'Департамент градостроительства', '7b36f4f8-8ffe-4487-988d-554c77b3c389');
+
+
+--
+-- Data for Name: sotrudnik; Type: TABLE DATA; Schema: public; Owner: flexberryuser
+--
+
+INSERT INTO public.sotrudnik (primaryKey, familiia, name, datarozhdeniia, departament) VALUES ('3113f850-6772-4577-82c3-c2f7a0cd6d86', 'Иванов', 'Иван', '1976-04-12 12:00:00.000', 'e72486ab-4e7b-429e-b078-812609f0baf7');
+INSERT INTO public.sotrudnik (primaryKey, familiia, name, datarozhdeniia, departament) VALUES ('2993f75f-be80-4949-bfa1-92631e36d060', 'Грамотный', 'Петр', '1980-12-02 12:00:00.000', 'e72486ab-4e7b-429e-b078-812609f0baf7');
+INSERT INTO public.sotrudnik (primaryKey, familiia, name, datarozhdeniia, departament) VALUES ('dc277c76-8567-4002-a4c4-3f81842bc49f', 'Веселуха', 'Надежда', '1990-01-01 12:00:00.000', '8153fa4e-0852-4210-98f7-caec10d01998');
+INSERT INTO public.sotrudnik (primaryKey, familiia, name, datarozhdeniia, departament) VALUES ('745f84a2-d651-4f96-9a83-d67f419cdb36', 'Петров', 'Сидор', '1983-05-27 12:00:00.000', '3817803e-404c-420b-b7d2-de942d087345');
+
+
+--
 -- PostgreSQL database dump complete
 --
