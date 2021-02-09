@@ -802,6 +802,38 @@ CREATE TABLE [STORMAuField] (
 	 PRIMARY KEY ([primaryKey]))
 
 
+CREATE TABLE [Departament] (
+
+	[primaryKey] uniqueidentifier NOT NULL,
+
+	[Name] nvarchar(255) NULL,
+
+ 	[Vid] uniqueidentifier NOT NULL,
+
+	PRIMARY KEY ([primaryKey]))
+
+
+CREATE TABLE [Sotrudnik] (
+	[primaryKey] uniqueidentifier NOT NULL,
+
+	[Familiia] nvarchar(255) NULL,
+
+	[Name] nvarchar(255) NULL,
+
+	[DataRozhdeniia] datetime NULL,
+
+	[Departament] uniqueidentifier NOT NULL,
+
+	PRIMARY KEY ([primaryKey]));
+
+
+CREATE TABLE [VidDepartamenta] (
+
+	[primaryKey] uniqueidentifier NOT NULL,
+
+	[Name] nvarchar(255) NULL,
+
+	PRIMARY KEY ([primaryKey]));
 
 
  ALTER TABLE [LookupDropdown] ADD CONSTRAINT [LookupDropdown_FMasterLookupDropdown_0] FOREIGN KEY ([MasterLookupDropdown]) REFERENCES [MasterLookupDropdown]
@@ -887,6 +919,12 @@ CREATE INDEX CommentVote_IApplicationUser on [CommentVote] ([ApplicationUser])
 
  ALTER TABLE [CommentVote] ADD CONSTRAINT [CommentVote_FComment_0] FOREIGN KEY ([Comment]) REFERENCES [Comment]
 CREATE INDEX CommentVote_IComment on [CommentVote] ([Comment])
+
+ ALTER TABLE [Departament] ADD CONSTRAINT [Departament_FVidDepartamenta_0] FOREIGN KEY ([Vid]) REFERENCES [VidDepartamenta]
+CREATE INDEX Departament_IVidDepartamenta on [Departament] ([Vid])
+
+ ALTER TABLE [Sotrudnik] ADD CONSTRAINT [Sotrudnik_FDepartament_0] FOREIGN KEY ([Departament]) REFERENCES [Departament]
+CREATE INDEX Sotrudnik_IDepartament on [Sotrudnik] ([Departament])
 
  ALTER TABLE [STORMWEBSEARCH] ADD CONSTRAINT [STORMWEBSEARCH_FSTORMFILTERSETTING_0] FOREIGN KEY ([FilterSetting_m0]) REFERENCES [STORMFILTERSETTING]
 
