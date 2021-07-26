@@ -20,6 +20,9 @@
     using NewPlatform.Flexberry.Services;
     using Unity;
     using Unity.AspNet.WebApi;
+    using ICSSoft.STORMNET.Business.LINQProvider;
+    using ICSSoft.STORMNET.FunctionalLanguage;
+    using ICSSoft.STORMNET.FunctionalLanguage.SQLWhere;
 
     /// <summary>
     /// Configure OData Service.
@@ -69,8 +72,10 @@
 
             // User functions
             token.Functions.Register(new Func<QueryParameters, string>(Test));
+            token.Functions.Register(new Func<QueryParameters, string>(UniqueAttributes));
+            token.Functions.Register(new Func<QueryParameters, string>(UniqueAttributes2));
             token.Functions.Register(new Func<string, bool>(ClearLogRecords));
-            token.Functions.Register(new Func<QueryParameters,IEnumerable<Sotrudnik>>(GetMastersForTest));
+            token.Functions.Register(new Func<QueryParameters, IEnumerable<Sotrudnik>>(GetMastersForTest));
             token.Functions.RegisterAction(new Func<QueryParameters, string, string, object>(DeleteAllSelect));
 
             // Event handlers
@@ -104,6 +109,100 @@
         private static string Test(QueryParameters queryParameters)
         {
             return "Hello world!";
+        }
+
+        private static string UniqueAttributes2(QueryParameters queryParameters)
+        {
+            var ds = DataServiceProvider.DataService as SQLDataService;
+            var modelName = GetPropertyValue2(queryParameters, "modelName");
+            var textValue = GetPropertyValue2(queryParameters, "property1");
+            var dateValue = GetPropertyValue2(queryParameters, "property2");
+
+            DateTime dt;
+
+            if (!string.IsNullOrWhiteSpace(dateValue))
+            {
+                var indChar = dateValue.IndexOf('(');
+
+                if (indChar > 1)
+                {
+                    dateValue = dateValue.Substring(0, indChar).Replace("GMT", string.Empty).TrimEnd();
+                }
+
+                dt = DateTime.ParseExact(dateValue, "ddd MMM dd yyyy HH:mm:ss zzz", System.Globalization.CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                return "false";
+            }
+
+            var cnt = ds.Query<Suggestion>(Suggestion.Views.SuggestionE)
+                .Where(x => x.Text == textValue && x.Date == dt)
+                .Count();
+
+            return cnt == 0 ? "true" : "false";
+        }
+
+        private static string UniqueAttributes(QueryParameters queryParameters)
+        {
+            var ds = DataServiceProvider.DataService as SQLDataService;
+            var ldef = SQLWhereLanguageDef.LanguageDef;
+
+            var objectTypeName = GetPropertyValue<string>(queryParameters, "objectType");
+            var property1name = GetPropertyValue<string>(queryParameters, "property1name");
+            var property2name = GetPropertyValue<string>(queryParameters, "property2name");
+            var property1value = GetPropertyValue<string>(queryParameters, "property1value");
+            var property2value = GetPropertyValue<string>(queryParameters, "property2value");
+
+            var objectType = Type.GetType(objectTypeName);
+            var view = new ICSSoft.STORMNET.View();
+
+            view.DefineClassType = objectType;
+            view.AddProperties(property1name);
+            view.AddProperties(property2name);
+
+            var lcs = LoadingCustomizationStruct.GetSimpleStruct(objectType, view);
+
+            lcs.LimitFunction = ldef.GetFunction(ldef.funcAND,
+                ldef.GetFunction(ldef.funcEQ, new VariableDef(ldef.StringType, property1name), property1value),
+                ldef.GetFunction(ldef.funcEQ, new VariableDef(ldef.StringType, property2name), property2value));
+
+            var cnt = ds.GetObjectsCount(lcs);
+
+            return cnt == 0 ? "true" : "false";
+        }
+
+        /// <summary>
+        /// Получить значение из параметров запроса.
+        /// </summary>
+        /// <typeparam name="T">Тип объекта.</typeparam>
+        /// <param name="queryParameters">Параметры запроса.</param>
+        /// <param name="key">Имя параметра.</param>
+        /// <returns>Значение параметра.</returns>
+        private static T GetPropertyValue<T>(QueryParameters queryParameters, string key)
+        {
+            var props = queryParameters.Request.Properties;
+            T result = default(T);
+
+            if (props.TryGetValue(key, out object resultObj))
+            {
+                result = (T)resultObj;
+            }
+
+            return result;
+        }
+
+        private static string GetPropertyValue2(QueryParameters queryParameters, string key)
+        {
+            var p = HttpUtility.ParseQueryString(queryParameters.Request.RequestUri.Query).Get(key);
+            string result = null;
+
+            if (!string.IsNullOrWhiteSpace(p))
+            {
+                result = p;
+            }
+
+            return result;
         }
 
         /// <summary>

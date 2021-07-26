@@ -6,11 +6,6 @@ services:
       - PostgresEmberFlexberryStandDB:/var/lib/pgsql/data/
     ports:
      - "5432:5432"
-  FlexberryApp:
-    image: "flexberry/ember-flexberry-stand-backend:latest"
-    command: /bin/bash -c "( rm /var/www/vhosts/test/Web.config ; /bin/cp /var/www/vhosts/test/Web.config.postgres /var/www/vhosts/test/Web.config ; /usr/sbin/httpd2 -D NO_DETACH -k start )"
-    ports:
-     - "6500:6500"
 
 volumes:
   PostgresEmberFlexberryStandDB: 
