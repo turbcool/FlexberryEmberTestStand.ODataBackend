@@ -38,6 +38,30 @@ namespace EmberFlexberryDummy
         
         // *** Start programmer edit section *** (ChildLevel1 CustomMembers)
 
+        /// <summary>
+        /// TextIf.
+        /// </summary>
+        // *** Start programmer edit section *** (TextIf CustomAttributes)
+
+        // *** End programmer edit section *** (TextIf CustomAttributes)
+        [ICSSoft.STORMNET.NotStored()]
+        public virtual string TextIf
+        {
+            get
+            {
+                // *** Start programmer edit section *** (TextIf Get)
+
+                return null;
+                // *** End programmer edit section *** (TextIf Get)
+            }
+            set
+            {
+                // *** Start programmer edit section *** (TextIf Set)
+
+                // *** End programmer edit section *** (TextIf Set)
+            }
+        }
+
         // *** End programmer edit section *** (ChildLevel1 CustomMembers)
 
         
@@ -69,30 +93,6 @@ namespace EmberFlexberryDummy
                 // *** Start programmer edit section *** (ChildLevel1.TextChild1 Set end)
 
                 // *** End programmer edit section *** (ChildLevel1.TextChild1 Set end)
-            }
-        }
-        
-        /// <summary>
-        /// TextIf.
-        /// </summary>
-        // *** Start programmer edit section *** (TextIf CustomAttributes)
-
-        // *** End programmer edit section *** (TextIf CustomAttributes)
-        [ICSSoft.STORMNET.NotStored()]
-        public virtual string TextIf
-        {
-            get
-            {
-                // *** Start programmer edit section *** (TextIf Get)
-
-                return null;
-                // *** End programmer edit section *** (TextIf Get)
-            }
-            set
-            {
-                // *** Start programmer edit section *** (TextIf Set)
-
-                // *** End programmer edit section *** (TextIf Set)
             }
         }
         

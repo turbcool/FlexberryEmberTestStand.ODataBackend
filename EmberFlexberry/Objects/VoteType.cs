@@ -28,17 +28,11 @@ namespace EmberFlexberryDummy
     public enum VoteType
     {
         
-        /// <summary>
-        /// 
-        /// </summary>
         // *** Start programmer edit section *** (VoteType.Like CustomAttributes)
 
         // *** End programmer edit section *** (VoteType.Like CustomAttributes)
         Like,
         
-        /// <summary>
-        /// 
-        /// </summary>
         // *** Start programmer edit section *** (VoteType.Dislike CustomAttributes)
 
         // *** End programmer edit section *** (VoteType.Dislike CustomAttributes)

@@ -1,1 +1,1 @@
-docker stack rm EmberFlexberryStand
+docker-compose -p emberflexberry down

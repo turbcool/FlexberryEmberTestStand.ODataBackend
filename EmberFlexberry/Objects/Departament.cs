@@ -47,11 +47,11 @@ namespace EmberFlexberryDummy
 
         
         /// <summary>
-        /// name.
+        /// Name.
         /// </summary>
-        // *** Start programmer edit section *** (Departament.name CustomAttributes)
+        // *** Start programmer edit section *** (Departament.Name CustomAttributes)
 
-        // *** End programmer edit section *** (Departament.name CustomAttributes)
+        // *** End programmer edit section *** (Departament.Name CustomAttributes)
         public virtual string Name
         {
             get
@@ -76,7 +76,7 @@ namespace EmberFlexberryDummy
                 // *** End programmer edit section *** (Departament.Name Set end)
             }
         }
-
+        
         /// <summary>
         /// Departament.
         /// </summary>
