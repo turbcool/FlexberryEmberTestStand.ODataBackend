@@ -216,10 +216,9 @@
         private static bool CallBackBeforeUpdate(DataObject obj)
         {
             if (obj is Comment
-                    && ((Comment)obj).__PrimaryKey.Equals(new ICSSoft.STORMNET.KeyGen.KeyGuid("11111111-1111-1111-1111-111111111111"))
-                    && ((Comment)obj).Text == "Test")
+                    && ((Comment)obj).Text == "Test 11111111-1111-1111-1111-111111111111")
             {
-                throw new Exception("For test purposes an exception is thrown when this comment is indented for deletion.");
+                throw new Exception("For test purposes an exception is thrown when this comment is indented for updating.");
             }
 
             return true;
