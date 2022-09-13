@@ -1,0 +1,1 @@
+docker-compose -f ember-flexberry-stand-postgres.yml up

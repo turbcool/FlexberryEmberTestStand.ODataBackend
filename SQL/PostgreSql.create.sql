@@ -20,7 +20,7 @@ CREATE TABLE Sotrudnik (
  Name VARCHAR(255) NULL,
  Familiia VARCHAR(255) NULL,
  DataRozhdeniia TIMESTAMP(3) NULL,
- Departament_m0 UUID NOT NULL,
+ Departament UUID NOT NULL,
  PRIMARY KEY (primaryKey));
 
 
@@ -258,7 +258,7 @@ CREATE TABLE TogglerExampleDetail (
 CREATE TABLE Departament (
  primaryKey UUID NOT NULL,
  Name VARCHAR(255) NULL,
- Vid_m0 UUID NOT NULL,
+ Vid UUID NOT NULL,
  PRIMARY KEY (primaryKey));
 
 
@@ -469,8 +469,8 @@ CREATE INDEX Index8ad8bdbbf758323a30d04a86829b93c404e4ec4a on LocalizedSuggestio
  ALTER TABLE LocalizedSuggestionType ADD CONSTRAINT FKb152c26239995bf42b87e24fd99b5fe571e6b395 FOREIGN KEY (SuggestionType) REFERENCES SuggestionType; 
 CREATE INDEX Indexb152c26239995bf42b87e24fd99b5fe571e6b395 on LocalizedSuggestionType (SuggestionType); 
 
- ALTER TABLE Sotrudnik ADD CONSTRAINT FK37ec01fb746e6fef17e8eaa66b9069f0237e3f2c FOREIGN KEY (Departament_m0) REFERENCES Departament; 
-CREATE INDEX Index37ec01fb746e6fef17e8eaa66b9069f0237e3f2c on Sotrudnik (Departament_m0); 
+ ALTER TABLE Sotrudnik ADD CONSTRAINT FK37ec01fb746e6fef17e8eaa66b9069f0237e3f2c FOREIGN KEY (Departament) REFERENCES Departament; 
+CREATE INDEX Index37ec01fb746e6fef17e8eaa66b9069f0237e3f2c on Sotrudnik (Departament); 
 
  ALTER TABLE ChildLevel2 ADD CONSTRAINT FKba2a22328adfbfed0e396b56733b9f26690c444e FOREIGN KEY (Type) REFERENCES SuggestionType; 
 CREATE INDEX Indexba2a22328adfbfed0e396b56733b9f26690c444e on ChildLevel2 (Type); 
@@ -532,8 +532,8 @@ CREATE INDEX Indexdb1c8fc9d4fa641cc426805f1d2aea5f7179fd98 on LazyLoadingDetail 
  ALTER TABLE TogglerExampleDetail ADD CONSTRAINT FKef57a20b1987b9d39912c117fc6f16e7847a58b6 FOREIGN KEY (TogglerExampleMaster) REFERENCES TogglerExampleMaster; 
 CREATE INDEX Indexef57a20b1987b9d39912c117fc6f16e7847a58b6 on TogglerExampleDetail (TogglerExampleMaster); 
 
- ALTER TABLE Departament ADD CONSTRAINT FKab64b5dccc66c6218672fce26a12adcb914d1bea FOREIGN KEY (Vid_m0) REFERENCES VidDepartamenta; 
-CREATE INDEX Indexab64b5dccc66c6218672fce26a12adcb914d1bea on Departament (Vid_m0); 
+ ALTER TABLE Departament ADD CONSTRAINT FKab64b5dccc66c6218672fce26a12adcb914d1bea FOREIGN KEY (Vid) REFERENCES VidDepartamenta; 
+CREATE INDEX Indexab64b5dccc66c6218672fce26a12adcb914d1bea on Departament (Vid); 
 
  ALTER TABLE Comment ADD CONSTRAINT FKaac2a9dc6559a0876a24219d4547c3cdfb0cf66c FOREIGN KEY (Author) REFERENCES ApplicationUser; 
 CREATE INDEX Indexaac2a9dc6559a0876a24219d4547c3cdfb0cf66c on Comment (Author); 
