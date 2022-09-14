@@ -2,18 +2,18 @@
 
 services:
   app:
-    image: flexberry/ember-flexberry-stand-backend:1.0.1-beta01-backend
+    image: flexberry/ember-flexberry-stand-backend:latest
     links:
       - app-postgres-db:app-postgres-db
     ports:
       - 80:80
     environment:
       - UploadUrl=Uploads
-      - BackendRoot=https://localhost
-      - DefConnStr=SERVER=app-postgres-db;User ID=postgres;Password=p@ssw0rd;Port=5435;database=appdb;
+      - BackendRoot=http://localhost
+      - DefConnStr=SERVER=app-postgres-db;User ID=postgres;Password=p@ssw0rd;Port=5432;database=appdb;
 
   app-postgres-db:
-    image: flexberry/ember-flexberry-stand-postgres:1.0.1-beta01-postgresql
+    image: flexberry/ember-flexberry-stand-postgres:latest
     volumes:
       - DB:/var/lib/pgsql/data/
     ports:
