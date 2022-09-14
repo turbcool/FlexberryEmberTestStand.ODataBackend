@@ -33,7 +33,7 @@ CREATE TABLE [Sotrudnik] (
 
 	 [DataRozhdeniia] DATETIME  NULL,
 
-	 [Departament_m0] UNIQUEIDENTIFIER  NOT NULL,
+	 [Departament] UNIQUEIDENTIFIER  NOT NULL,
 
 	 PRIMARY KEY ([primaryKey]))
 
@@ -437,7 +437,7 @@ CREATE TABLE [Departament] (
 
 	 [Name] NVARCHAR(MAX)  NULL,
 
-	 [Vid_m0] UNIQUEIDENTIFIER  NOT NULL,
+	 [Vid] UNIQUEIDENTIFIER  NOT NULL,
 
 	 PRIMARY KEY ([primaryKey]))
 

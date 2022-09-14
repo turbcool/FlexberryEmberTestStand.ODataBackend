@@ -17,6 +17,6 @@ services:
     volumes:
       - DB:/var/lib/pgsql/data/
     ports:
-      - 5435:5432
+      - 15435:5432
 volumes:
   DB:

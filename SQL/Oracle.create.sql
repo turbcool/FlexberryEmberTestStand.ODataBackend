@@ -36,7 +36,7 @@ CREATE TABLE "Sotrudnik"
 
 	"DataRozhdeniia" DATE NULL,
 
-	"Departament_m0" RAW(16) NOT NULL,
+	"Departament" RAW(16) NOT NULL,
 
 	 PRIMARY KEY ("primaryKey")
 ) ;
@@ -488,7 +488,7 @@ CREATE TABLE "Departament"
 
 	"Name" NVARCHAR2(255) NULL,
 
-	"Vid_m0" RAW(16) NOT NULL,
+	"Vid" RAW(16) NOT NULL,
 
 	 PRIMARY KEY ("primaryKey")
 ) ;
@@ -945,9 +945,9 @@ ALTER TABLE "LocalizedSuggestionType"
 CREATE INDEX "LocalizedSuggestionType_I_1306" on "LocalizedSuggestionType" ("SuggestionType");
 
 ALTER TABLE "Sotrudnik"
-	ADD CONSTRAINT "Sotrudnik_FDepartament_0" FOREIGN KEY ("Departament_m0") REFERENCES "Departament" ("primaryKey");
+	ADD CONSTRAINT "Sotrudnik_FDepartament_0" FOREIGN KEY ("Departament") REFERENCES "Departament" ("primaryKey");
 
-CREATE INDEX "Sotrudnik_IDepartament_m0" on "Sotrudnik" ("Departament_m0");
+CREATE INDEX "Sotrudnik_IDepartament" on "Sotrudnik" ("Departament");
 
 ALTER TABLE "ChildLevel2"
 	ADD CONSTRAINT "ChildLevel2_FSuggestionType_0" FOREIGN KEY ("Type") REFERENCES "SuggestionType" ("primaryKey");
@@ -1050,9 +1050,9 @@ ALTER TABLE "TogglerExampleDetail"
 CREATE INDEX "TogglerExampleDetail_ITogg_137" on "TogglerExampleDetail" ("TogglerExampleMaster");
 
 ALTER TABLE "Departament"
-	ADD CONSTRAINT "Departament_FVidDepartamenta_0" FOREIGN KEY ("Vid_m0") REFERENCES "VidDepartamenta" ("primaryKey");
+	ADD CONSTRAINT "Departament_FVidDepartamenta_0" FOREIGN KEY ("Vid") REFERENCES "VidDepartamenta" ("primaryKey");
 
-CREATE INDEX "Departament_IVid_m0" on "Departament" ("Vid_m0");
+CREATE INDEX "Departament_IVid" on "Departament" ("Vid");
 
 ALTER TABLE "Comment"
 	ADD CONSTRAINT "Comment_FApplicationUser_0" FOREIGN KEY ("Author") REFERENCES "ApplicationUser" ("primaryKey");
