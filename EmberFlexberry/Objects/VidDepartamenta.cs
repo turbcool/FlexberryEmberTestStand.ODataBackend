@@ -36,12 +36,12 @@ namespace EmberFlexberryDummy
     {
         
         private string fName;
-
+        
         // *** Start programmer edit section *** (VidDepartamenta CustomMembers)
 
         // *** End programmer edit section *** (VidDepartamenta CustomMembers)
 
-
+        
         /// <summary>
         /// Name.
         /// </summary>

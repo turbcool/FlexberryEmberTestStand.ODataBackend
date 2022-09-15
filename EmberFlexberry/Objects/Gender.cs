@@ -29,27 +29,18 @@ namespace EmberFlexberryDummy
     public enum Gender
     {
         
-        /// <summary>
-        /// 
-        /// </summary>
         // *** Start programmer edit section *** (Gender.Male CustomAttributes)
 
         // *** End programmer edit section *** (Gender.Male CustomAttributes)
         [Caption("Male")]
         Male,
         
-        /// <summary>
-        /// 
-        /// </summary>
         // *** Start programmer edit section *** (Gender.Female CustomAttributes)
 
         // *** End programmer edit section *** (Gender.Female CustomAttributes)
         [Caption("Female")]
         Female,
         
-        /// <summary>
-        /// 
-        /// </summary>
         // *** Start programmer edit section *** (Gender.Unknown CustomAttributes)
 
         // *** End programmer edit section *** (Gender.Unknown CustomAttributes)

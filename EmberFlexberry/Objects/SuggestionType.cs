@@ -12,8 +12,8 @@ namespace EmberFlexberryDummy
 {
     using System;
     using System.Xml;
-    using ICSSoft.STORMNET;
     using ICSSoft.STORMNET.Business;
+    using ICSSoft.STORMNET;
     using ICSSoft.STORMNET.Business.Audit;
     
     
@@ -28,6 +28,7 @@ namespace EmberFlexberryDummy
     // *** Start programmer edit section *** (SuggestionType CustomAttributes)
 
     // *** End programmer edit section *** (SuggestionType CustomAttributes)
+    [BusinessServer("EmberFlexberryDummy.ApplicationBS, EmberFlexberry.BusinessServers", ICSSoft.STORMNET.Business.DataServiceObjectEvents.OnAllEvents)]
     [AutoAltered()]
     [Caption("Suggestion type")]
     [AccessType(ICSSoft.STORMNET.AccessType.none)]
@@ -54,7 +55,9 @@ namespace EmberFlexberryDummy
             "Parent",
             "Parent.Name",
             "Parent.Moderated",
-            "Parent.ComputedField"})]
+            "Parent.ComputedField",
+            "Parent.Parent",
+            "Parent.Parent.Name"})]
     [AssociatedDetailViewAttribute("SuggestionTypeEWithComputedField", "LocalizedTypes", "LocalizedSuggestionTypeE", true, "", "", true, new string[] {
             ""})]
     [View("SuggestionTypeL", new string[] {
@@ -84,12 +87,9 @@ namespace EmberFlexberryDummy
         private EmberFlexberryDummy.SuggestionType fParent;
         
         private EmberFlexberryDummy.DetailArrayOfLocalizedSuggestionType fLocalizedTypes;
-
-        private bool fIsParentRecord;
-
+        
         // *** Start programmer edit section *** (SuggestionType CustomMembers)
-
-        // *** End programmer edit section *** (SuggestionType CustomMembers)
+        private bool fIsParentRecord;
 
         /// <summary>
         /// IsParentRecord.
@@ -117,6 +117,9 @@ namespace EmberFlexberryDummy
         }
 
 
+        // *** End programmer edit section *** (SuggestionType CustomMembers)
+
+        
         /// <summary>
         /// Время создания объекта.
         /// </summary>
@@ -303,15 +306,15 @@ namespace EmberFlexberryDummy
                 // *** End programmer edit section *** (SuggestionType.Moderated Set end)
             }
         }
-
+        
         /// <summary>
         /// ComputedField.
         /// </summary>
         // *** Start programmer edit section *** (SuggestionType.ComputedField CustomAttributes)
         [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.SQLDataService), "@Name@ + \' \' + @Moderated@")]
-        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.MSSQLDataService), "@Name@ + \' \' + @Moderated@")]
-        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.PostgresDataService), "@Name@ || \' \' || @Moderated@")]
-        [DataServiceExpression(typeof(ICSSoft.STORMNET.Business.OracleDataService), "@Name@ || \\\' \\\' || @Moderated@")]
+        //[DataServiceExpression(typeof(ICSSoft.STORMNET.Business.MSSQLDataService), "@Name@ + \' \' + @Moderated@")]
+        //[DataServiceExpression(typeof(ICSSoft.STORMNET.Business.PostgresDataService), "@Name@ || \' \' || @Moderated@")]
+        //[DataServiceExpression(typeof(ICSSoft.STORMNET.Business.OracleDataService), "@Name@ || \\\' \\\' || @Moderated@")]
         // *** End programmer edit section *** (SuggestionType.ComputedField CustomAttributes)
         [ICSSoft.STORMNET.NotStored()]
         public virtual string ComputedField

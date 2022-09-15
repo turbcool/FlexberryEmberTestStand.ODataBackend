@@ -1,17 +1,22 @@
-FROM flexberry/mono-ember as backend
+﻿FROM mcr.microsoft.com/dotnet/sdk:3.1 as backend
 
-ENV PROJECT=EmberFlexberry
+COPY /EmberFlexberry /EmberFlexberry
 
-ARG TAG=1.0.0-beta18-backend
+WORKDIR /EmberFlexberry
 
-RUN	git clone --depth=50 --branch=$TAG https://github.com/Flexberry/FlexberryEmberTestStand.ODataBackend.git /backend-src && \
-	cd /backend-src/$PROJECT ; \
-	nuget restore $PROJECT.sln ; \
-	msbuild /p:Configuration=Release $PROJECT.sln
+RUN \
+ dotnet restore EmberFlexberry.sln;\
+ dotnet build EmberFlexberry.sln -c Release;\
+ dotnet publish ODataBackend/EmberFlexberry.ODataBackend.csproj -c Release -o out -f netcoreapp3.1
 
-FROM flexberry/alt.p8-apache2-mono:latest
+FROM mcr.microsoft.com/dotnet/aspnet:3.1
 
-RUN	rm -r /var/www/vhosts/test
+WORKDIR /app
 
-COPY --from=backend /backend-src/EmberFlexberry/ODataBackend /var/www/vhosts/test
-COPY vhosts.conf /conf
+COPY --from=backend /EmberFlexberry/out ./
+
+# Check webapi responses
+HEALTHCHECK --interval=60s --timeout=15s --start-period=20s \
+  CMD curl -f "http://0.0.0.0/health" || exit
+
+ENTRYPOINT ["dotnet", "EmberFlexberry.ODataBackend.dll"]

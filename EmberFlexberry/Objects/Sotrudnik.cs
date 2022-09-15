@@ -33,8 +33,8 @@ namespace EmberFlexberryDummy
             "Name as \'Имя\'",
             "DataRozhdeniia as \'Дата\'",
             "Departament as \'Департамент\'",
-            "Departament.vid as \'Вид департамента\'"})]
-    [MasterViewDefineAttribute("SotrudnikE", "Departament", ICSSoft.STORMNET.LookupTypeEnum.Standard, "", "name")]
+            "Departament.Vid as \'Вид департамента\'"})]
+            [MasterViewDefineAttribute("SotrudnikE", "Departament", ICSSoft.STORMNET.LookupTypeEnum.Standard, "", "name")]
     [View("SotrudnikL", new string[] {
             "Familiia as \'Фамилия\'",
             "Name as \'Имя\'",
@@ -42,50 +42,19 @@ namespace EmberFlexberryDummy
     public class Sotrudnik : ICSSoft.STORMNET.DataObject
     {
         
-        private string fFamiliia;
-        
         private string fName;
+        
+        private string fFamiliia;
         
         private System.DateTime fDataRozhdeniia;
         
         private EmberFlexberryDummy.Departament fDepartament;
-
+        
         // *** Start programmer edit section *** (Sotrudnik CustomMembers)
 
         // *** End programmer edit section *** (Sotrudnik CustomMembers)
 
-
-        /// <summary>
-        /// Familiia.
-        /// </summary>
-        // *** Start programmer edit section *** (Sotrudnik.Familiia CustomAttributes)
-
-        // *** End programmer edit section *** (Sotrudnik.Familiia CustomAttributes)
-        public virtual string Familiia
-        {
-            get
-            {
-                // *** Start programmer edit section *** (Sotrudnik.Familiia Get start)
-
-                // *** End programmer edit section *** (Sotrudnik.Familiia Get start)
-                string result = this.fFamiliia;
-                // *** Start programmer edit section *** (Sotrudnik.Familiia Get end)
-
-                // *** End programmer edit section *** (Sotrudnik.Familiia Get end)
-                return result;
-            }
-            set
-            {
-                // *** Start programmer edit section *** (Sotrudnik.Familiia Set start)
-
-                // *** End programmer edit section *** (Sotrudnik.Familiia Set start)
-                this.fFamiliia = value;
-                // *** Start programmer edit section *** (Sotrudnik.Familiia Set end)
-
-                // *** End programmer edit section *** (Sotrudnik.Familiia Set end)
-            }
-        }
-
+        
         /// <summary>
         /// Name.
         /// </summary>
@@ -116,7 +85,38 @@ namespace EmberFlexberryDummy
                 // *** End programmer edit section *** (Sotrudnik.Name Set end)
             }
         }
+        
+        /// <summary>
+        /// Familiia.
+        /// </summary>
+        // *** Start programmer edit section *** (Sotrudnik.Familiia CustomAttributes)
 
+        // *** End programmer edit section *** (Sotrudnik.Familiia CustomAttributes)
+        public virtual string Familiia
+        {
+            get
+            {
+                // *** Start programmer edit section *** (Sotrudnik.Familiia Get start)
+
+                // *** End programmer edit section *** (Sotrudnik.Familiia Get start)
+                string result = this.fFamiliia;
+                // *** Start programmer edit section *** (Sotrudnik.Familiia Get end)
+
+                // *** End programmer edit section *** (Sotrudnik.Familiia Get end)
+                return result;
+            }
+            set
+            {
+                // *** Start programmer edit section *** (Sotrudnik.Familiia Set start)
+
+                // *** End programmer edit section *** (Sotrudnik.Familiia Set start)
+                this.fFamiliia = value;
+                // *** Start programmer edit section *** (Sotrudnik.Familiia Set end)
+
+                // *** End programmer edit section *** (Sotrudnik.Familiia Set end)
+            }
+        }
+        
         /// <summary>
         /// DataRozhdeniia.
         /// </summary>
@@ -131,9 +131,9 @@ namespace EmberFlexberryDummy
 
                 // *** End programmer edit section *** (Sotrudnik.DataRozhdeniia Get start)
                 System.DateTime result = this.fDataRozhdeniia;
-                // *** Start programmer edit section *** (Sotrudnik.dataRozhdeniia Get end)
+                // *** Start programmer edit section *** (Sotrudnik.DataRozhdeniia Get end)
 
-                // *** End programmer edit section *** (Sotrudnik.dataRozhdeniia Get end)
+                // *** End programmer edit section *** (Sotrudnik.DataRozhdeniia Get end)
                 return result;
             }
             set

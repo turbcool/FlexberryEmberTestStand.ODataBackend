@@ -12,6 +12,7 @@ namespace EmberFlexberryDummy
 {
     using System;
     using System.Xml;
+    using ICSSoft.STORMNET.Business;
     using ICSSoft.STORMNET;
     using ICSSoft.STORMNET.Business.Audit;
     
@@ -27,6 +28,7 @@ namespace EmberFlexberryDummy
     // *** Start programmer edit section *** (ApplicationUser CustomAttributes)
 
     // *** End programmer edit section *** (ApplicationUser CustomAttributes)
+    [BusinessServer("EmberFlexberryDummy.ApplicationBS, EmberFlexberry.BusinessServers", ICSSoft.STORMNET.Business.DataServiceObjectEvents.OnAllEvents)]
     [AutoAltered()]
     [Caption("Application user")]
     [AccessType(ICSSoft.STORMNET.AccessType.none)]

@@ -1,16 +1,22 @@
 ﻿version: '3'
-services:
-  app-postgres-db:
-    image: "flexberry/ember-flexberry-stand-postgres:latest"
-    volumes:
-      - PostgresEmberFlexberryStandDB:/var/lib/pgsql/data/
-    ports:
-     - "5432:5432"
-  FlexberryApp:
-    image: "flexberry/ember-flexberry-stand-backend:latest"
-    command: /bin/bash -c "( rm /var/www/vhosts/test/Web.config ; /bin/cp /var/www/vhosts/test/Web.config.postgres /var/www/vhosts/test/Web.config ; /usr/sbin/httpd2 -D NO_DETACH -k start )"
-    ports:
-     - "6500:6500"
 
+services:
+  app:
+    image: flexberry/ember-flexberry-stand-backend:latest
+    links:
+      - app-postgres-db:app-postgres-db
+    ports:
+      - 80:80
+    environment:
+      - UploadUrl=Uploads
+      - BackendRoot=http://localhost
+      - DefConnStr=SERVER=app-postgres-db;User ID=postgres;Password=p@ssw0rd;Port=5432;database=appdb;
+
+  app-postgres-db:
+    image: flexberry/ember-flexberry-stand-postgres:latest
+    volumes:
+      - DB:/var/lib/pgsql/data/
+    ports:
+      - 15435:5432
 volumes:
-  PostgresEmberFlexberryStandDB: 
+  DB:

@@ -1,5 +1,1 @@
-docker stack ls >NUL  2>NUL
-IF %ERRORLEVEL% NEQ 0 (
-	docker swarm init
-)
-docker stack deploy -c ember-flexberry-stand-postgres.yml EmberFlexberryStand
+docker-compose -f ember-flexberry-stand-postgres.yml up

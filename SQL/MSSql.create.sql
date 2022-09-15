@@ -1,121 +1,5 @@
+﻿
 
-
-
-
-CREATE TABLE [GraduateRecord] (
-
-	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
-
-	 [GrFIO] NVARCHAR(MAX)  NULL,
-
-	 [GrYearGrad] INT  NULL,
-
-	 [UniquelD] NVARCHAR(MAX)  NULL,
-
-	 [ObjectPK] INT  NULL,
-
-	 PRIMARY KEY ([primaryKey]))
-
-
-CREATE TABLE [Localization] (
-
-	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
-
-	 [CreateTime] DATETIME  NULL,
-
-	 [Creator] NVARCHAR(MAX)  NULL,
-
-	 [EditTime] DATETIME  NULL,
-
-	 [Editor] NVARCHAR(MAX)  NULL,
-
-	 [Name] NVARCHAR(MAX)  NOT NULL,
-
-	 PRIMARY KEY ([primaryKey]))
-
-
-CREATE TABLE [LookupDropdown] (
-
-	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
-
-	 [Name] NVARCHAR(MAX)  NULL,
-
-	 [MasterLookupDropdown] UNIQUEIDENTIFIER  NOT NULL,
-
-	 PRIMARY KEY ([primaryKey]))
-
-
-CREATE TABLE [listLocalization] (
-
-	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
-
-	 [name] NVARCHAR(MAX)  NULL,
-
-	 [localeValue] NVARCHAR(MAX)  NULL,
-
-	 [Catalog] UNIQUEIDENTIFIER  NOT NULL,
-
-	 PRIMARY KEY ([primaryKey]))
-
-
-CREATE TABLE [SuccessorSocialNetwork] (
-
-	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
-
-	 [VK] NVARCHAR(MAX)  NULL,
-
-	 [Facebook] NVARCHAR(MAX)  NULL,
-
-	 [Twitter] NVARCHAR(MAX)  NULL,
-
-	 [Name] NVARCHAR(MAX)  NULL,
-
-	 [EMail] NVARCHAR(MAX)  NULL,
-
-	 [Birthday] DATETIME  NULL,
-
-	 PRIMARY KEY ([primaryKey]))
-
-
-CREATE TABLE [CatalogMaster] (
-
-	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
-
-	 [name] NVARCHAR(MAX)  NULL,
-
-	 PRIMARY KEY ([primaryKey]))
-
-
-CREATE TABLE [SuggestionType] (
-
-	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
-
-	 [CreateTime] DATETIME  NULL,
-
-	 [Creator] NVARCHAR(MAX)  NULL,
-
-	 [EditTime] DATETIME  NULL,
-
-	 [Editor] NVARCHAR(MAX)  NULL,
-
-	 [Name] NVARCHAR(MAX)  NOT NULL,
-
-	 [Moderated] BIT  NULL,
-
-	 [Parent] UNIQUEIDENTIFIER  NULL,
-
-	 PRIMARY KEY ([primaryKey]))
-
-
-CREATE TABLE [Catalog] (
-
-	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
-
-	 [name] NVARCHAR(MAX)  NULL,
-
-	 [CatalogMaster] UNIQUEIDENTIFIER  NOT NULL,
-
-	 PRIMARY KEY ([primaryKey]))
 
 
 CREATE TABLE [LocalizedSuggestionType] (
@@ -139,31 +23,45 @@ CREATE TABLE [LocalizedSuggestionType] (
 	 PRIMARY KEY ([primaryKey]))
 
 
-CREATE TABLE [LazyLoadingDetail] (
+CREATE TABLE [Sotrudnik] (
 
 	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
 
-	 [DetailText] NVARCHAR(MAX)  NULL,
+	 [Name] NVARCHAR(MAX)  NULL,
 
-	 [LazyLoadingMaster] UNIQUEIDENTIFIER  NOT NULL,
+	 [Familiia] NVARCHAR(MAX)  NULL,
+
+	 [DataRozhdeniia] DATETIME  NULL,
+
+	 [Departament] UNIQUEIDENTIFIER  NOT NULL,
 
 	 PRIMARY KEY ([primaryKey]))
 
 
-CREATE TABLE [MasterLookupDropdown] (
+CREATE TABLE [VidDepartamenta] (
 
 	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
 
-	 [Text] NVARCHAR(MAX)  NULL,
+	 [Name] NVARCHAR(MAX)  NULL,
 
 	 PRIMARY KEY ([primaryKey]))
 
 
-CREATE TABLE [LazyLoadingMaster] (
+CREATE TABLE [SuccessorPhone] (
 
 	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
 
-	 [MasterText] NVARCHAR(MAX)  NULL,
+	 [Phone1] NVARCHAR(MAX)  NULL,
+
+	 [Phone2] NVARCHAR(MAX)  NULL,
+
+	 [Phone3] NVARCHAR(MAX)  NULL,
+
+	 [Name] NVARCHAR(MAX)  NULL,
+
+	 [EMail] NVARCHAR(MAX)  NULL,
+
+	 [Birthday] DATETIME  NULL,
 
 	 PRIMARY KEY ([primaryKey]))
 
@@ -209,102 +107,11 @@ CREATE TABLE [ApplicationUser] (
 	 PRIMARY KEY ([primaryKey]))
 
 
-CREATE TABLE [TestPolyAnotherChild] (
+CREATE TABLE [MasterLookupDropdown] (
 
 	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
-
-	 [ChildAnotherPole] BIT  NULL,
-
-	 [Pole] NVARCHAR(MAX)  NULL,
-
-	 PRIMARY KEY ([primaryKey]))
-
-
-CREATE TABLE [SuccessorPhone] (
-
-	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
-
-	 [Phone1] NVARCHAR(MAX)  NULL,
-
-	 [Phone2] NVARCHAR(MAX)  NULL,
-
-	 [Phone3] NVARCHAR(MAX)  NULL,
-
-	 [Name] NVARCHAR(MAX)  NULL,
-
-	 [EMail] NVARCHAR(MAX)  NULL,
-
-	 [Birthday] DATETIME  NULL,
-
-	 PRIMARY KEY ([primaryKey]))
-
-
-CREATE TABLE [Vote] (
-
-	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
-
-	 [CreateTime] DATETIME  NULL,
-
-	 [Creator] NVARCHAR(MAX)  NULL,
-
-	 [EditTime] DATETIME  NULL,
-
-	 [Editor] NVARCHAR(MAX)  NULL,
-
-	 [VoteType] VARCHAR(7)  NULL,
-
-	 [ApplicationUser] UNIQUEIDENTIFIER  NOT NULL,
-
-	 [Suggestion] UNIQUEIDENTIFIER  NOT NULL,
-
-	 PRIMARY KEY ([primaryKey]))
-
-
-CREATE TABLE [Master] (
-
-	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
-
-	 [Name] NVARCHAR(MAX)  NULL,
-
-	 PRIMARY KEY ([primaryKey]))
-
-
-CREATE TABLE [Suggestion] (
-
-	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
-
-	 [CreateTime] DATETIME  NULL,
-
-	 [Creator] NVARCHAR(MAX)  NULL,
-
-	 [EditTime] DATETIME  NULL,
-
-	 [Editor] NVARCHAR(MAX)  NULL,
-
-	 [Address] NVARCHAR(MAX)  NULL,
 
 	 [Text] NVARCHAR(MAX)  NULL,
-
-	 [Date] DATETIME  NULL,
-
-	 [Votes] INT  NULL,
-
-	 [Moderated] BIT  NULL,
-
-	 [Author] UNIQUEIDENTIFIER  NOT NULL,
-
-	 [Type] UNIQUEIDENTIFIER  NOT NULL,
-
-	 [Editor1] UNIQUEIDENTIFIER  NOT NULL,
-
-	 PRIMARY KEY ([primaryKey]))
-
-
-CREATE TABLE [TogglerExampleMaster] (
-
-	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
-
-	 [TogglerExampleMasterProperty] NVARCHAR(MAX)  NULL,
 
 	 PRIMARY KEY ([primaryKey]))
 
@@ -331,17 +138,119 @@ CREATE TABLE [ChildLevel2] (
 
 	 [Text] NVARCHAR(MAX)  NULL,
 
-	 [Date] DATETIME  NULL,
+	 [Date] DATETIME  NOT NULL,
 
 	 [Votes] INT  NULL,
 
 	 [Moderated] BIT  NULL,
 
+	 [Type] UNIQUEIDENTIFIER  NOT NULL,
+
 	 [Author] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [Editor1] UNIQUEIDENTIFIER  NOT NULL,
+
+	 PRIMARY KEY ([primaryKey]))
+
+
+CREATE TABLE [Suggestion] (
+
+	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [CreateTime] DATETIME  NULL,
+
+	 [Creator] NVARCHAR(MAX)  NULL,
+
+	 [EditTime] DATETIME  NULL,
+
+	 [Editor] NVARCHAR(MAX)  NULL,
+
+	 [Address] NVARCHAR(MAX)  NULL,
+
+	 [Text] NVARCHAR(MAX)  NULL,
+
+	 [Date] DATETIME  NOT NULL,
+
+	 [Votes] INT  NULL,
+
+	 [Moderated] BIT  NULL,
 
 	 [Type] UNIQUEIDENTIFIER  NOT NULL,
 
+	 [Author] UNIQUEIDENTIFIER  NOT NULL,
+
 	 [Editor1] UNIQUEIDENTIFIER  NOT NULL,
+
+	 PRIMARY KEY ([primaryKey]))
+
+
+CREATE TABLE [CatalogMaster] (
+
+	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [name] NVARCHAR(MAX)  NULL,
+
+	 PRIMARY KEY ([primaryKey]))
+
+
+CREATE TABLE [Vote] (
+
+	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [CreateTime] DATETIME  NULL,
+
+	 [Creator] NVARCHAR(MAX)  NULL,
+
+	 [EditTime] DATETIME  NULL,
+
+	 [Editor] NVARCHAR(MAX)  NULL,
+
+	 [VoteType] VARCHAR(7)  NULL,
+
+	 [ApplicationUser] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [Suggestion] UNIQUEIDENTIFIER  NOT NULL,
+
+	 PRIMARY KEY ([primaryKey]))
+
+
+CREATE TABLE [SuccessorSocialNetwork] (
+
+	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [VK] NVARCHAR(MAX)  NULL,
+
+	 [Facebook] NVARCHAR(MAX)  NULL,
+
+	 [Twitter] NVARCHAR(MAX)  NULL,
+
+	 [Name] NVARCHAR(MAX)  NULL,
+
+	 [EMail] NVARCHAR(MAX)  NULL,
+
+	 [Birthday] DATETIME  NULL,
+
+	 PRIMARY KEY ([primaryKey]))
+
+
+CREATE TABLE [TestPolyAnotherChild] (
+
+	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [ChildAnotherPole] BIT  NULL,
+
+	 [Pole] NVARCHAR(MAX)  NULL,
+
+	 PRIMARY KEY ([primaryKey]))
+
+
+CREATE TABLE [LookupDropdown] (
+
+	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [Name] NVARCHAR(MAX)  NULL,
+
+	 [MasterLookupDropdown] UNIQUEIDENTIFIER  NOT NULL,
 
 	 PRIMARY KEY ([primaryKey]))
 
@@ -364,17 +273,82 @@ CREATE TABLE [ChildLevel1] (
 
 	 [Text] NVARCHAR(MAX)  NULL,
 
-	 [Date] DATETIME  NULL,
+	 [Date] DATETIME  NOT NULL,
 
 	 [Votes] INT  NULL,
 
 	 [Moderated] BIT  NULL,
 
-	 [Author] UNIQUEIDENTIFIER  NOT NULL,
-
 	 [Type] UNIQUEIDENTIFIER  NOT NULL,
 
+	 [Author] UNIQUEIDENTIFIER  NOT NULL,
+
 	 [Editor1] UNIQUEIDENTIFIER  NOT NULL,
+
+	 PRIMARY KEY ([primaryKey]))
+
+
+CREATE TABLE [TestPolyChild] (
+
+	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [ChildPole] INT  NULL,
+
+	 [Pole] NVARCHAR(MAX)  NULL,
+
+	 PRIMARY KEY ([primaryKey]))
+
+
+CREATE TABLE [Detail] (
+
+	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [Name] NVARCHAR(MAX)  NULL,
+
+	 [ParentDetail] UNIQUEIDENTIFIER  NULL,
+
+	 [Master] UNIQUEIDENTIFIER  NOT NULL,
+
+	 PRIMARY KEY ([primaryKey]))
+
+
+CREATE TABLE [GraduateRecord] (
+
+	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [GrFIO] NVARCHAR(MAX)  NULL,
+
+	 [GrYearGrad] INT  NULL,
+
+	 [UniquelD] NVARCHAR(MAX)  NULL,
+
+	 [ObjectPK] INT  NULL,
+
+	 PRIMARY KEY ([primaryKey]))
+
+
+CREATE TABLE [Localization] (
+
+	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [CreateTime] DATETIME  NULL,
+
+	 [Creator] NVARCHAR(MAX)  NULL,
+
+	 [EditTime] DATETIME  NULL,
+
+	 [Editor] NVARCHAR(MAX)  NULL,
+
+	 [Name] NVARCHAR(MAX)  NOT NULL,
+
+	 PRIMARY KEY ([primaryKey]))
+
+
+CREATE TABLE [LazyLoadingMaster] (
+
+	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [MasterText] NVARCHAR(MAX)  NULL,
 
 	 PRIMARY KEY ([primaryKey]))
 
@@ -388,6 +362,82 @@ CREATE TABLE [Parent] (
 	 [EMail] NVARCHAR(MAX)  NULL,
 
 	 [Birthday] DATETIME  NULL,
+
+	 PRIMARY KEY ([primaryKey]))
+
+
+CREATE TABLE [TestPoly] (
+
+	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [SelfPole] NVARCHAR(MAX)  NULL,
+
+	 [Relation_m0] UNIQUEIDENTIFIER  NULL,
+
+	 [Relation_m1] UNIQUEIDENTIFIER  NULL,
+
+	 PRIMARY KEY ([primaryKey]))
+
+
+CREATE TABLE [CommentVote] (
+
+	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [CreateTime] DATETIME  NULL,
+
+	 [Creator] NVARCHAR(MAX)  NULL,
+
+	 [EditTime] DATETIME  NULL,
+
+	 [Editor] NVARCHAR(MAX)  NULL,
+
+	 [VoteType] VARCHAR(7)  NULL,
+
+	 [ApplicationUser] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [Comment] UNIQUEIDENTIFIER  NOT NULL,
+
+	 PRIMARY KEY ([primaryKey]))
+
+
+CREATE TABLE [Master] (
+
+	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [Name] NVARCHAR(MAX)  NULL,
+
+	 PRIMARY KEY ([primaryKey]))
+
+
+CREATE TABLE [LazyLoadingDetail] (
+
+	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [DetailText] NVARCHAR(MAX)  NULL,
+
+	 [LazyLoadingMaster] UNIQUEIDENTIFIER  NOT NULL,
+
+	 PRIMARY KEY ([primaryKey]))
+
+
+CREATE TABLE [TogglerExampleDetail] (
+
+	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [TogglerExampleDetailProperty] NVARCHAR(MAX)  NULL,
+
+	 [TogglerExampleMaster] UNIQUEIDENTIFIER  NOT NULL,
+
+	 PRIMARY KEY ([primaryKey]))
+
+
+CREATE TABLE [Departament] (
+
+	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [Name] NVARCHAR(MAX)  NULL,
+
+	 [Vid] UNIQUEIDENTIFIER  NOT NULL,
 
 	 PRIMARY KEY ([primaryKey]))
 
@@ -417,26 +467,13 @@ CREATE TABLE [Comment] (
 	 PRIMARY KEY ([primaryKey]))
 
 
-CREATE TABLE [TogglerExampleDetail] (
+CREATE TABLE [Catalog] (
 
 	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
 
-	 [TogglerExampleDetailProperty] NVARCHAR(MAX)  NULL,
+	 [name] NVARCHAR(MAX)  NULL,
 
-	 [TogglerExampleMaster] UNIQUEIDENTIFIER  NOT NULL,
-
-	 PRIMARY KEY ([primaryKey]))
-
-
-CREATE TABLE [TestPoly] (
-
-	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
-
-	 [SelfPole] NVARCHAR(MAX)  NULL,
-
-	 [Relation_m0] UNIQUEIDENTIFIER  NULL,
-
-	 [Relation_m1] UNIQUEIDENTIFIER  NULL,
+	 [CatalogMaster] UNIQUEIDENTIFIER  NOT NULL,
 
 	 PRIMARY KEY ([primaryKey]))
 
@@ -452,30 +489,6 @@ CREATE TABLE [StudentRecord] (
 	 [UniquelD] NVARCHAR(MAX)  NULL,
 
 	 [ObjectPK] INT  NULL,
-
-	 PRIMARY KEY ([primaryKey]))
-
-
-CREATE TABLE [TestPolyChild] (
-
-	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
-
-	 [ChildPole] INT  NULL,
-
-	 [Pole] NVARCHAR(MAX)  NULL,
-
-	 PRIMARY KEY ([primaryKey]))
-
-
-CREATE TABLE [Detail] (
-
-	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
-
-	 [Name] NVARCHAR(MAX)  NULL,
-
-	 [ParentDetail] UNIQUEIDENTIFIER  NULL,
-
-	 [Master] UNIQUEIDENTIFIER  NOT NULL,
 
 	 PRIMARY KEY ([primaryKey]))
 
@@ -501,7 +514,29 @@ CREATE TABLE [SuggestionFile] (
 	 PRIMARY KEY ([primaryKey]))
 
 
-CREATE TABLE [CommentVote] (
+CREATE TABLE [listLocalization] (
+
+	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [name] NVARCHAR(MAX)  NULL,
+
+	 [localeValue] NVARCHAR(MAX)  NULL,
+
+	 [Catalog] UNIQUEIDENTIFIER  NOT NULL,
+
+	 PRIMARY KEY ([primaryKey]))
+
+
+CREATE TABLE [TogglerExampleMaster] (
+
+	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
+
+	 [TogglerExampleMasterProperty] NVARCHAR(MAX)  NULL,
+
+	 PRIMARY KEY ([primaryKey]))
+
+
+CREATE TABLE [SuggestionType] (
 
 	 [primaryKey] UNIQUEIDENTIFIER  NOT NULL,
 
@@ -513,11 +548,11 @@ CREATE TABLE [CommentVote] (
 
 	 [Editor] NVARCHAR(MAX)  NULL,
 
-	 [VoteType] VARCHAR(7)  NULL,
+	 [Name] NVARCHAR(MAX)  NOT NULL,
 
-	 [ApplicationUser] UNIQUEIDENTIFIER  NOT NULL,
+	 [Moderated] BIT  NULL,
 
-	 [Comment] UNIQUEIDENTIFIER  NOT NULL,
+	 [Parent] UNIQUEIDENTIFIER  NULL,
 
 	 PRIMARY KEY ([primaryKey]))
 
@@ -723,6 +758,8 @@ CREATE TABLE [STORMAG] (
 
 	 [Email] varchar(80)  NULL,
 
+	 [Comment] varchar(MAX)  NULL,
+
 	 [CreateTime] datetime  NULL,
 
 	 [Creator] varchar(255)  NULL,
@@ -802,145 +839,5 @@ CREATE TABLE [STORMAuField] (
 	 PRIMARY KEY ([primaryKey]))
 
 
-CREATE TABLE [Departament] (
 
-	[primaryKey] uniqueidentifier NOT NULL,
-
-	[Name] nvarchar(255) NULL,
-
- 	[Vid] uniqueidentifier NOT NULL,
-
-	PRIMARY KEY ([primaryKey]))
-
-
-CREATE TABLE [Sotrudnik] (
-	[primaryKey] uniqueidentifier NOT NULL,
-
-	[Familiia] nvarchar(255) NULL,
-
-	[Name] nvarchar(255) NULL,
-
-	[DataRozhdeniia] datetime NULL,
-
-	[Departament] uniqueidentifier NOT NULL,
-
-	PRIMARY KEY ([primaryKey]));
-
-
-CREATE TABLE [VidDepartamenta] (
-
-	[primaryKey] uniqueidentifier NOT NULL,
-
-	[Name] nvarchar(255) NULL,
-
-	PRIMARY KEY ([primaryKey]));
-
-
- ALTER TABLE [LookupDropdown] ADD CONSTRAINT [LookupDropdown_FMasterLookupDropdown_0] FOREIGN KEY ([MasterLookupDropdown]) REFERENCES [MasterLookupDropdown]
-CREATE INDEX LookupDropdown_IMasterLookupDropdown on [LookupDropdown] ([MasterLookupDropdown])
-
- ALTER TABLE [listLocalization] ADD CONSTRAINT [listLocalization_FCatalog_0] FOREIGN KEY ([Catalog]) REFERENCES [Catalog]
-CREATE INDEX listLocalization_ICatalog on [listLocalization] ([Catalog])
-
- ALTER TABLE [SuggestionType] ADD CONSTRAINT [SuggestionType_FSuggestionType_0] FOREIGN KEY ([Parent]) REFERENCES [SuggestionType]
-CREATE INDEX SuggestionType_IParent on [SuggestionType] ([Parent])
-
- ALTER TABLE [Catalog] ADD CONSTRAINT [Catalog_FCatalogMaster_0] FOREIGN KEY ([CatalogMaster]) REFERENCES [CatalogMaster]
-CREATE INDEX Catalog_ICatalogMaster on [Catalog] ([CatalogMaster])
-
- ALTER TABLE [LocalizedSuggestionType] ADD CONSTRAINT [LocalizedSuggestionType_FLocalization_0] FOREIGN KEY ([Localization]) REFERENCES [Localization]
-CREATE INDEX LocalizedSuggestionType_ILocalization on [LocalizedSuggestionType] ([Localization])
-
- ALTER TABLE [LocalizedSuggestionType] ADD CONSTRAINT [LocalizedSuggestionType_FSuggestionType_0] FOREIGN KEY ([SuggestionType]) REFERENCES [SuggestionType]
-CREATE INDEX LocalizedSuggestionType_ISuggestionType on [LocalizedSuggestionType] ([SuggestionType])
-
- ALTER TABLE [LazyLoadingDetail] ADD CONSTRAINT [LazyLoadingDetail_FLazyLoadingMaster_0] FOREIGN KEY ([LazyLoadingMaster]) REFERENCES [LazyLoadingMaster]
-CREATE INDEX LazyLoadingDetail_ILazyLoadingMaster on [LazyLoadingDetail] ([LazyLoadingMaster])
-
- ALTER TABLE [Vote] ADD CONSTRAINT [Vote_FApplicationUser_0] FOREIGN KEY ([ApplicationUser]) REFERENCES [ApplicationUser]
-CREATE INDEX Vote_IApplicationUser on [Vote] ([ApplicationUser])
-
- ALTER TABLE [Vote] ADD CONSTRAINT [Vote_FSuggestion_0] FOREIGN KEY ([Suggestion]) REFERENCES [Suggestion]
-CREATE INDEX Vote_ISuggestion on [Vote] ([Suggestion])
-
- ALTER TABLE [Suggestion] ADD CONSTRAINT [Suggestion_FApplicationUser_0] FOREIGN KEY ([Author]) REFERENCES [ApplicationUser]
-CREATE INDEX Suggestion_IAuthor on [Suggestion] ([Author])
-
- ALTER TABLE [Suggestion] ADD CONSTRAINT [Suggestion_FSuggestionType_0] FOREIGN KEY ([Type]) REFERENCES [SuggestionType]
-CREATE INDEX Suggestion_IType on [Suggestion] ([Type])
-
- ALTER TABLE [Suggestion] ADD CONSTRAINT [Suggestion_FApplicationUser_1] FOREIGN KEY ([Editor1]) REFERENCES [ApplicationUser]
-CREATE INDEX Suggestion_IEditor1 on [Suggestion] ([Editor1])
-
- ALTER TABLE [ChildLevel2] ADD CONSTRAINT [ChildLevel2_FApplicationUser_0] FOREIGN KEY ([Author]) REFERENCES [ApplicationUser]
-CREATE INDEX ChildLevel2_IAuthor on [ChildLevel2] ([Author])
-
- ALTER TABLE [ChildLevel2] ADD CONSTRAINT [ChildLevel2_FSuggestionType_0] FOREIGN KEY ([Type]) REFERENCES [SuggestionType]
-CREATE INDEX ChildLevel2_IType on [ChildLevel2] ([Type])
-
- ALTER TABLE [ChildLevel2] ADD CONSTRAINT [ChildLevel2_FApplicationUser_1] FOREIGN KEY ([Editor1]) REFERENCES [ApplicationUser]
-CREATE INDEX ChildLevel2_IEditor1 on [ChildLevel2] ([Editor1])
-
- ALTER TABLE [ChildLevel1] ADD CONSTRAINT [ChildLevel1_FApplicationUser_0] FOREIGN KEY ([Author]) REFERENCES [ApplicationUser]
-CREATE INDEX ChildLevel1_IAuthor on [ChildLevel1] ([Author])
-
- ALTER TABLE [ChildLevel1] ADD CONSTRAINT [ChildLevel1_FSuggestionType_0] FOREIGN KEY ([Type]) REFERENCES [SuggestionType]
-CREATE INDEX ChildLevel1_IType on [ChildLevel1] ([Type])
-
- ALTER TABLE [ChildLevel1] ADD CONSTRAINT [ChildLevel1_FApplicationUser_1] FOREIGN KEY ([Editor1]) REFERENCES [ApplicationUser]
-CREATE INDEX ChildLevel1_IEditor1 on [ChildLevel1] ([Editor1])
-
- ALTER TABLE [Comment] ADD CONSTRAINT [Comment_FApplicationUser_0] FOREIGN KEY ([Author]) REFERENCES [ApplicationUser]
-CREATE INDEX Comment_IAuthor on [Comment] ([Author])
-
- ALTER TABLE [Comment] ADD CONSTRAINT [Comment_FSuggestion_0] FOREIGN KEY ([Suggestion]) REFERENCES [Suggestion]
-CREATE INDEX Comment_ISuggestion on [Comment] ([Suggestion])
-
- ALTER TABLE [TogglerExampleDetail] ADD CONSTRAINT [TogglerExampleDetail_FTogglerExampleMaster_0] FOREIGN KEY ([TogglerExampleMaster]) REFERENCES [TogglerExampleMaster]
-CREATE INDEX TogglerExampleDetail_ITogglerExampleMaster on [TogglerExampleDetail] ([TogglerExampleMaster])
-
- ALTER TABLE [TestPoly] ADD CONSTRAINT [TestPoly_FTestPolyChild_0] FOREIGN KEY ([Relation_m0]) REFERENCES [TestPolyChild]
-CREATE INDEX TestPoly_IRelation_m0 on [TestPoly] ([Relation_m0])
-
- ALTER TABLE [TestPoly] ADD CONSTRAINT [TestPoly_FTestPolyAnotherChild_0] FOREIGN KEY ([Relation_m1]) REFERENCES [TestPolyAnotherChild]
-CREATE INDEX TestPoly_IRelation_m1 on [TestPoly] ([Relation_m1])
-
- ALTER TABLE [Detail] ADD CONSTRAINT [Detail_FDetail_0] FOREIGN KEY ([ParentDetail]) REFERENCES [Detail]
-CREATE INDEX Detail_IParentDetail on [Detail] ([ParentDetail])
-
- ALTER TABLE [Detail] ADD CONSTRAINT [Detail_FMaster_0] FOREIGN KEY ([Master]) REFERENCES [Master]
-CREATE INDEX Detail_IMaster on [Detail] ([Master])
-
- ALTER TABLE [SuggestionFile] ADD CONSTRAINT [SuggestionFile_FSuggestion_0] FOREIGN KEY ([Suggestion]) REFERENCES [Suggestion]
-CREATE INDEX SuggestionFile_ISuggestion on [SuggestionFile] ([Suggestion])
-
- ALTER TABLE [CommentVote] ADD CONSTRAINT [CommentVote_FApplicationUser_0] FOREIGN KEY ([ApplicationUser]) REFERENCES [ApplicationUser]
-CREATE INDEX CommentVote_IApplicationUser on [CommentVote] ([ApplicationUser])
-
- ALTER TABLE [CommentVote] ADD CONSTRAINT [CommentVote_FComment_0] FOREIGN KEY ([Comment]) REFERENCES [Comment]
-CREATE INDEX CommentVote_IComment on [CommentVote] ([Comment])
-
- ALTER TABLE [Departament] ADD CONSTRAINT [Departament_FVidDepartamenta_0] FOREIGN KEY ([Vid]) REFERENCES [VidDepartamenta]
-CREATE INDEX Departament_IVidDepartamenta on [Departament] ([Vid])
-
- ALTER TABLE [Sotrudnik] ADD CONSTRAINT [Sotrudnik_FDepartament_0] FOREIGN KEY ([Departament]) REFERENCES [Departament]
-CREATE INDEX Sotrudnik_IDepartament on [Sotrudnik] ([Departament])
-
- ALTER TABLE [STORMWEBSEARCH] ADD CONSTRAINT [STORMWEBSEARCH_FSTORMFILTERSETTING_0] FOREIGN KEY ([FilterSetting_m0]) REFERENCES [STORMFILTERSETTING]
-
- ALTER TABLE [STORMFILTERDETAIL] ADD CONSTRAINT [STORMFILTERDETAIL_FSTORMFILTERSETTING_0] FOREIGN KEY ([FilterSetting_m0]) REFERENCES [STORMFILTERSETTING]
-
- ALTER TABLE [STORMFILTERLOOKUP] ADD CONSTRAINT [STORMFILTERLOOKUP_FSTORMFILTERSETTING_0] FOREIGN KEY ([FilterSetting_m0]) REFERENCES [STORMFILTERSETTING]
-
- ALTER TABLE [STORMLG] ADD CONSTRAINT [STORMLG_FSTORMAG_0] FOREIGN KEY ([Group_m0]) REFERENCES [STORMAG]
-
- ALTER TABLE [STORMLG] ADD CONSTRAINT [STORMLG_FSTORMAG_1] FOREIGN KEY ([User_m0]) REFERENCES [STORMAG]
-
- ALTER TABLE [STORMAuEntity] ADD CONSTRAINT [STORMAuEntity_FSTORMAG_0] FOREIGN KEY ([User_m0]) REFERENCES [STORMAG]
-
- ALTER TABLE [STORMAuEntity] ADD CONSTRAINT [STORMAuEntity_FSTORMAuObjType_0] FOREIGN KEY ([ObjectType_m0]) REFERENCES [STORMAuObjType]
-
- ALTER TABLE [STORMAuField] ADD CONSTRAINT [STORMAuField_FSTORMAuField_0] FOREIGN KEY ([MainChange_m0]) REFERENCES [STORMAuField]
-
- ALTER TABLE [STORMAuField] ADD CONSTRAINT [STORMAuField_FSTORMAuEntity_0] FOREIGN KEY ([AuditEntity_m0]) REFERENCES [STORMAuEntity]
 

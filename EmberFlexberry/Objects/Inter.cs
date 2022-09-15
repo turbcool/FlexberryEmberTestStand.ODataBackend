@@ -29,10 +29,6 @@ namespace EmberFlexberryDummy
     {
         
         // *** Start programmer edit section *** (Inter CustomMembers)
-
-        // *** End programmer edit section *** (Inter CustomMembers)
-
-        
         /// <summary>
         /// TextIf.
         /// </summary>
@@ -44,5 +40,7 @@ namespace EmberFlexberryDummy
             get;
             set;
         }
+        // *** End programmer edit section *** (Inter CustomMembers)
+
     }
 }
