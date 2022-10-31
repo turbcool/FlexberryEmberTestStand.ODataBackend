@@ -123,6 +123,13 @@
                 token.Functions.RegisterAction(new Func<IEnumerable<DataObject>>(ODataTestMultyTypedResult));
                 token.Functions.RegisterAction(new Func<IEnumerable<DataObject>>(ODataTestMultyTypedWithLinksResult));
 
+                // Register void action.
+                token.Functions.Register(new NewPlatform.Flexberry.ORM.ODataService.Functions.Action(
+                                    "ExecuteVoidAction",
+                                    ExecuteVoidAction,
+                                    typeof(void),
+                                    new Dictionary<string, Type>()));
+
                 // Event handlers
                 token.Events.CallbackAfterCreate = CallbackAfterCreate;
                 token.Events.CallbackBeforeUpdate = CallBackBeforeUpdate;
@@ -192,6 +199,15 @@
             container.RegisterSingleton<ISecurityManager, EmptySecurityManager>();
             container.RegisterSingleton<IDataService, PostgresDataService>(
                 Inject.Property(nameof(PostgresDataService.CustomizationString), connStr));
+        }
+
+        /// <summary>
+        /// Method to check how void action returns 204 NoContent.
+        /// </summary>
+        /// <param name="queryParameters">Some parameters.</param>
+        private static void ExecuteVoidAction(QueryParameters queryParameters, IDictionary<string, object> parameters)
+        {
+            System.Diagnostics.Debug.WriteLine("Void method was executed.");
         }
 
         private static IEnumerable<Sotrudnik> GetMastersForTest(QueryParameters queryParameters)
