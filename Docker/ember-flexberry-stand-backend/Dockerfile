@@ -1,15 +1,15 @@
-﻿FROM mcr.microsoft.com/dotnet/sdk:3.1 as backend
+﻿FROM mcr.microsoft.com/dotnet/sdk:7.0 as backend
 
 COPY /EmberFlexberry /EmberFlexberry
 
 WORKDIR /EmberFlexberry
 
 RUN \
- dotnet restore EmberFlexberry.sln;\
- dotnet build EmberFlexberry.sln -c Release;\
- dotnet publish ODataBackend/EmberFlexberry.ODataBackend.csproj -c Release -o out -f netcoreapp3.1
+  dotnet restore EmberFlexberry.sln;\
+  dotnet build EmberFlexberry.sln -c Release;\
+  dotnet publish ODataBackend/EmberFlexberry.ODataBackend.csproj -c Release -o out -f net7.0
 
-FROM mcr.microsoft.com/dotnet/aspnet:3.1
+FROM mcr.microsoft.com/dotnet/aspnet:7.0
 
 WORKDIR /app
 
